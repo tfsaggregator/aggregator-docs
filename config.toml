@@ -1,0 +1,25 @@
+baseurl = "https://tfsaggregator.github.io/"
+languageCode = "en-us"
+title = "TFS Aggregator Docs"
+theme = "hugo-theme-learn"
+metadataformat = "yaml"
+canonifyurls = "true"
+# Enable Google Analytics by entering your tracking id
+googleAnalytics = ""
+enableGitInfo = "true"
+
+[params]
+  # Menu/Chapter ordering
+  menu = [ "intro", "using", "admin", "contrib" ]
+  # Prefix URL to edit current page. Useful to give opportunity to people to create merge request for your doc.
+  editURL = "https://github.com/tfsaggregator/tfsaggregator-docs-hugo/edit/master/content/"
+  # Author of the site, will be used in meta information
+  author = "TFS Aggregator Team"
+  # Description of the site, will be used in meta information
+  description = "TFS Aggregator Documentation"
+  # Shows a checkmark for visited pages on the menu. Default to false
+  showVisitedLinks = false
+  # footer version information
+  release = "2.3"
+  # Prefix URL to see the commit for current page.
+  commitBaseUrl = "https://github.com/tfsaggregator/tfsaggregator-docs-hugo/commit/"
