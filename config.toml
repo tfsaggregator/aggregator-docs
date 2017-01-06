@@ -9,6 +9,7 @@ googleAnalytics = ""
 enableGitInfo = "true"
 
 [params]
+  search = true
   # Menu/Chapter ordering
   menu = [ "intro", "using", "admin", "contrib" ]
   # Prefix URL to edit current page. Useful to give opportunity to people to create merge request for your doc.

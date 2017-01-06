@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "index": "lunr-hugo -i \"content/**/*.md\" -o static/json/search.json -l yaml"
+    }
+}
