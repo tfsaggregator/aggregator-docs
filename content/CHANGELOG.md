@@ -1,4 +1,10 @@
-# Changelog
+# History of Changes
+
+## What’s new in v2.3 (beta)
+
+ * Support for VSTS & TFS 2015/2017 Web Hooks
+ * Additional authentication modes
+ * Rule filter on change event (`New`,`Change`,`Delete`,`Restore`)
 
 ## What's new in v2.2
  * Support for TFS 2017
@@ -8,7 +14,6 @@
  * Ability to Send email from Rules
  * Migrated CI build from AppVeyor to VSTS
  * Use of GitVersion to manage [Semantic Versioning](http://semver.org/)
- 
 
 ## What's new in v2.1.1
  * Fixes important bug causing very high CPU usage (see [#160](https://github.com/tfsaggregator/tfsaggregator/issues/160)).
