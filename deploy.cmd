@@ -4,7 +4,6 @@ cd %~dp0
 REM HACK see npm issue #2938
 call npm run index
 hugo --ignoreCache --noChmod --verbose
-goto quit
 
 :: PUBLISH
 cd public

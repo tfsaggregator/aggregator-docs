@@ -2,9 +2,10 @@
 
 ## What’s new in v2.3 (beta)
 
- * Support for VSTS & TFS 2015/2017 Web Hooks
+ * Support for VSTS & TFS 2015 / 2017 Web Hooks via Web Service
  * Additional authentication modes
  * Rule filter on change event (`New`,`Change`,`Delete`,`Restore`)
+ * _Deploy to Azure_ button for an easy deployment
 
 ## What's new in v2.2
  * Support for TFS 2017
