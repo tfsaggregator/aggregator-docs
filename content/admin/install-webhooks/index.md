@@ -96,6 +96,7 @@ Define the `policyFilePath` in `web.config`; the default value is the static pat
 
 Instead of a static path you can use a variable value from the incoming request e.g. `<add key="policyFilePath" value="~/App_Data/{CollectionId}.policies" />`.
 The possible variables for `policyFilePath`, extracted from the incoming request data are:
+
  * `{EventType}` could be `workitem.created` `workitem.updated` `workitem.restored` or `workitem.deleted`
  * `{AccountId}` Guid of VSTS Account (TFS 2017 or later)
  * `{CollectionId}` Guid of collection
@@ -185,6 +186,7 @@ Select the triggering event
 ![](.//4-hooks4.png)
 
 > You may have to repeat this step for all four event:
+>
 > * New/created
 > * Change/updated
 > * Delete
