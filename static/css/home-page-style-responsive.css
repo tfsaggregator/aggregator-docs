@@ -1,0 +1,44 @@
+/* full page image header area */
+
+@media (min-width: 1024.1px) {
+    .header {
+        background-image: url('../images/pexels-photo-240163.jpeg');
+    }
+}
+@media (max-width: 319.9px) {
+    .header {
+        background-image: url('../images/pexels-photo-240163-sm.jpeg');
+    }
+}
+@media (max-width: 319.9px), (min-width: 1024.1px) {
+    .header {
+        background-position: center center;
+        -webkit-background-size: cover;
+           -moz-background-size: cover;
+             -o-background-size: cover;
+                background-size: cover;
+        background-attachment: fixed;
+    }
+}
+@media (min-width: 320px) and (max-width: 1024px) {
+    .header {
+        background-position: 0% 0%;
+        -webkit-background-size: 100% 100%;
+           -moz-background-size: 100% 100%;
+             -o-background-size: 100% 100%;
+                background-size: 100% 100%;
+        background-attachment: scroll;
+        background-clip: border-box;
+        background-origin: padding-box;
+    }
+}
+@media (min-width: 320px) and (max-width: 1024px) and (orientation: portrait) {
+    .header {
+        background-image: url('../images/pexels-photo-240163-mini.jpeg');
+    }
+}
+@media (min-width: 320px) and (max-width: 1024px) and (orientation: landscape) {
+    .header {
+        background-image: url('../images/pexels-photo-240163-wide.jpeg');
+    }
+}
