@@ -12,9 +12,9 @@ that enables running custom script when Work Items change,
 allowing dynamic calculation of field values in TFS and more.
 (For example: Dev work + Test Work = Total Work).
 
-You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS 2013 update 2 up to TFS 2017 RTM, or the [**Web Hooks**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version, for VSTS or TFS 2015 and later.
+You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS 2013 update 2 up to TFS 2017 RTM, or the [**Web Service**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version, for VSTS or TFS 2015 and later.
 
-> The Web Hooks version is still in beta.
+> The Web Service version is still in beta.
 
 > TFS Server API changed frequently in the past: the Server Plugin contains specific checks for the TFS version.
 > TFS Aggregator Server Plugin binaries will work only with a specific TFS version.
@@ -33,7 +33,7 @@ See the [Changelog](/CHANGELOG/) for an history of releases.
 
 ## Setup & install
 
-The easiest way to deploy the [**Web Hooks**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version is to use the _Deploy to Azure_ button on the [repository page](https://github.com/tfsaggregator/tfsaggregator-webhooks).
+The easiest way to deploy the [**Web Service**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version is to use the _Deploy to Azure_ button on the [repository page](https://github.com/tfsaggregator/tfsaggregator-webhooks).
 
 The latest [Install](https://github.com/tfsaggregator/tfsaggregator/releases) package contains A fully automated setup for the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator).
 

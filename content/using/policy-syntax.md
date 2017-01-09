@@ -86,9 +86,9 @@ Valid values are:
 **authentication**: Define authentication behavior. (Once, Optional)
 
  - **autoImpersonate**: `false` (default) the TFS Service account, `true` the user requesting. (Optional)
- - **personalToken**: A Personal Access Token. (WebHooks, Optional)
- - **username**: A Username. (WebHooks, Optional)
- - **password**: A Password in clear text. (WebHooks, Optional)
+ - **personalToken**: A Personal Access Token. (WebService, Optional)
+ - **username**: A Username. (WebService, Optional)
+ - **password**: A Password in clear text. (WebService, Optional)
 
 ```
     <snippet name="MySnippet">
@@ -118,7 +118,7 @@ Valid values are:
  - **name**: The name of this rule. (Mandatory)
  - **appliesTo**: The name of the work item type that this rule will target. (All: *, List, Optional, List separators: ,;)
  - **hasFields**: The work item must have the listed fields for the rule to apply. (All: *, List, Optional, List separators: ,;)
- - **changes**: `New,Change,Delete,Restore` (default) what change event triggers the Rule. (WebHooks, Optional)
+ - **changes**: `New,Change,Delete,Restore` (default) what change event triggers the Rule. (WebService, Optional)
  - **_content_**: the script to execute when the rule triggers. (Mandatory)
    The `self` (`$self` in PowerShell) variable contains the work item that triggered the plugin.
    The `self` (`$self` in PowerShell) variable contains the work item that triggered the plugin.

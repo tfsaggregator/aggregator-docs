@@ -40,20 +40,21 @@ The [CI build](/contrib/continuous-integration) page explains some important thi
 | feature/* | No  | New feature, idea |
 
 
-## Wiki
+## Documentation
 
-Wiki `master` branch content must match the latest release. To prepare documentation for a future release, use a branch as in the code repository.
+[tfsaggregator-docs-hugo](https://github.com/tfsaggregator/tfsaggregator-docs-hugo) `master` branch content must match the latest release.
+To prepare documentation for a future release, use a branch as in the code repository.
 
 
 ## Release process
 
  - collect solved issues
  - prepare Markdown release notes
- - update wiki `release/v#` branch
+ - update tfsaggregator-docs-hugo `release/v#` branch
  - tag repo
  - merge `release/v#` branch to `master` (use PR when possible)
  - create GitHub Release pasting release notes
- - merge wiki `release/v#` branch to `master` and delete it
+ - merge tfsaggregator-docs-hugo `release/v#` branch to `master` and delete it
  - download binaries and upload to Release
  - merge `master` branch to `develop`
  - increment v# in `develop` branch and push

@@ -1,12 +1,12 @@
 ---
-title: "Installing the Plugin"
+title: "Installing the Server Plugin"
 weight: 310
 prev: /admin/
 next: /admin/console-app
 toc: true
 ---
 
-> This information does **not** apply to the WebHooks version.
+> This information does **not** apply to the Web Service version.
 
 ## Pre-requisites
 ### TFS ###
