@@ -24,7 +24,9 @@ There are  three possible options to grant access. In most cases you will have t
 ### 1. Using a Personal Access Token
 
 a. Create a Personal Access Token ![Create Personal Access Token  screenshot](./0-PAT1.png)
+
 > Leave **All scopes** select; TFS Aggregator use the old Object Model (see [Authentication issue using Personal Access Token when all options of "Selected Scope" are selected](https://social.msdn.microsoft.com/Forums/vstudio/en-US/5564cb2b-4e46-4a41-b12c-bc50304c777b/authentication-issue-using-personal-access-token-when-all-options-of-selected-scope-are-selected?forum=TFService)).
+
 b. Capture Personal Access Token's value and store it for later ![Personal Access Token's value](./0-PAT2.png)
 
 > NOTE: this is per-account value you can use (User Profile/Security)
@@ -45,6 +47,7 @@ If you do not allow access expect a similar error
 ### 1. [TFS only] Install on IIS 
 
 To install TfsAggregator web application you can use the `Deploy-TfsAggregatorWebHooks.ps1` as a sample script
+
  * use SSL to avoid exposing credentials
  * the account running Aggregator application pool must have proper permissions on the target TFS _or_ you set some credentials in the policy file
 
@@ -82,6 +85,7 @@ at the `https://`<name_chosen_in_previous_step>`.scm.azurewebsites.net` URL. Nav
 ### Add users to `web.config` file
 
 Add at least one user in the `Users` section
+
 ```
   <Users>
     <add key="vsts" value="P@ssw0rd!" />
