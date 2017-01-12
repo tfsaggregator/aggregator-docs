@@ -2,6 +2,7 @@
 toc: true
 next: /using/objects-reference/store-object
 prev: /using/object-model
+icon: "-&nbsp;"
 title: self Object
 weight: 241
 ---

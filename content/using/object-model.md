@@ -1,6 +1,6 @@
 ---
 toc: true
-next: /using/policy-examples
+next: /using/objects-reference/self-object/
 prev: /using/scripting
 title: Objects Reference
 weight: 240

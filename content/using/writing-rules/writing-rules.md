@@ -1,6 +1,6 @@
 ---
 toc: true
-next: /
+next: /using/policy-syntax/
 prev: /using/scripting
 title: Writing Rules and Policies
 weight: 210

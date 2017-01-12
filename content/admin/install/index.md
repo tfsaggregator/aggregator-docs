@@ -2,7 +2,7 @@
 title: "Installing the Server Plugin"
 weight: 310
 prev: /admin/
-next: /admin/console-app
+next: /admin/install-webhooks
 toc: true
 ---
 

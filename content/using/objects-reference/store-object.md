@@ -2,6 +2,7 @@
 toc: true
 next: /using/objects-reference/logger-object
 prev: /using/objects-reference/self-object
+icon: "-&nbsp;"
 title: store Object
 weight: 242
 ---

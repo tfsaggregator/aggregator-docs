@@ -1,7 +1,7 @@
 ﻿---
 title: "Installing the Web Service"
 weight: 315
-prev: /admin/
+prev: /admin/install
 next: /admin/console-app
 toc: true
 ---

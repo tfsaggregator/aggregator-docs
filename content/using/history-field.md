@@ -2,6 +2,7 @@
 toc: true
 next: /using/upgrade-from-v1
 prev: /using/scripting-pitfalls
+icon: "-&nbsp;"
 title: History field
 weight: 271
 ---

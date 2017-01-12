@@ -2,6 +2,7 @@
 toc: true
 next: /using/objects-reference/library-objects
 prev: /using/objects-reference/store-object
+icon: "-&nbsp;"
 title: logger Object
 weight: 243
 ---
@@ -19,6 +20,7 @@ logger.Log(LogLevel.Warning, "Unexpected work item state!");
 ```
 
 Possible values are:
+
  * Critical
  * Error
  * Warning
@@ -27,6 +29,7 @@ Possible values are:
  * Diagnostic
 
 Each message goes to
+
 * Debug output (visible using DebugView)
 * Windows _Application_ EventLog using `TFS Aggregator` source, when level is at **Warning** or **Critical** level
 * .Net Trace listeners

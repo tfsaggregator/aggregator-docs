@@ -1,7 +1,7 @@
 ---
 title: "Using the console to test Policies"
 weight: 320
-prev: /admin/install
+prev: /admin/install-webhooks
 next: /admin/troubleshooting
 toc: true
 ---

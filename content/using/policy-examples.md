@@ -1,7 +1,7 @@
 ---
 toc: true
 next: /using/scripting-tricks-n-tips
-prev: /using/object-model
+prev: /using/objects-reference/library-objects/
 title: Examples of Policies
 weight: 250
 ---

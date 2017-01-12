@@ -2,6 +2,7 @@
 toc: true
 next: /using/policy-examples
 prev: /using/objects-reference/logger-object
+icon: "-&nbsp;"
 title: Library Objects
 weight: 244
 ---
