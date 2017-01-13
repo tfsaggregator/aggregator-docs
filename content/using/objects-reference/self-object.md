@@ -1,6 +1,6 @@
 ---
 toc: true
-next: /using/objects-reference/store-object
+next: /using/objects-reference/field-object
 prev: /using/object-model
 icon: "-&nbsp;"
 title: self Object
@@ -10,7 +10,7 @@ Represents the work item that triggered the rule and corresponds to the `IWorkIt
 
 ## Fields collection
 
-You can access the [Fields](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.aspx) collection using either syntax:
+You can directly access a Field using its name:
 ```
 self.Fields["field_name"]
 ```
@@ -27,13 +27,7 @@ for other type of fields we suggest to use the following syntax
 var str = self["field_name"]?.ToString();
 ```
 
-The Aggregator `Field` exposes the following properties:
- * [`Name`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.name.aspx)
- * [`ReferenceName`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.referencename.aspx)
- * [`Value`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.value.aspx)
- * [`Status`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.status.aspx)
- * [`OriginalValue`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.field.originalvalue.aspx)
- * [`DataType`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.fielddefinition.systemtype.aspx)
+See [`Field`](/using/objects-reference/field-object) for more information.
 
 
 
@@ -90,20 +84,34 @@ self.AddHyperlink("https://github.com/tfsaggregator/tfsaggregator", "Automatical
 ```
 
 ## History and related properties
-`self` offers the [`History`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.history.aspx) [RevisedDate](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.reviseddate.aspx) and [Revision](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.revision.aspx) properties.
+`self` offers the [`History`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.history.aspx),
+[`RevisedDate`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.reviseddate.aspx)
+and [`Revision`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.revision.aspx) properties.
 
 In addition, the `LastRevision` property offers access to latest Fields values. While `PreviousRevision` and `NextRevision` can be used to traverse the history of the workitem.
+
 
 ## Miscellaneous properties
 
 The [`IsValid`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.isvalid.aspx) method is important to check is you set some invalid field value on a work item.
 
-You can get the [`Id`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.id.aspx) and [`TypeName`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitemtype.name.aspx) of a work item
+You can get the [`Id`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.id.aspx)
+and [`TypeName`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitemtype.name.aspx) of a work item.
+The [`Uri`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.uri.aspx)
+property returns the uniform resource identifier (Uri) of this work item. 
 
-<!--
-    // state helpers; must be on interface to work on WorkItemLazyReference
-    void TransitionToState(string state, string comment);
--->
+
+## TransitionToState method
+
+Set the state of `self` Work Item.
+
+A Process Templates can limt the possibile transition states, for example
+many templates do not allow you to go directly from a `New` state to a `Done` state.
+With this method TFS Aggregator will cycle the work item through what ever states it needs to to find the **shortest route** to the target state.
+(For most templates that is also the route that makes the most sense from a business perspective too.)
+```
+self.TransitionToState("Closed", "Closed by TFS Aggregator");
+```
 
 
 ## Fluent Queries

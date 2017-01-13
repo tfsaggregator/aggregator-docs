@@ -1,14 +1,19 @@
 ---
 toc: true
 next: /using/objects-reference/logger-object
-prev: /using/objects-reference/self-object
+prev: /using/objects-reference/field-object
 icon: "-&nbsp;"
 title: store Object
-weight: 242
+weight: 243
 ---
 
 Represents the current Collection's Work Items and corresponds to the `IWorkItemRepositoryExposed` interface.
-It exposes only two methods `GetWorkItem` and `MakeNewWorkItem`.
+It exposes these methods:
+
+ * `GetWorkItem`
+ * `MakeNewWorkItem`
+ * `GetGlobalList`
+
 
 ## GetWorkItem method
 
@@ -17,6 +22,7 @@ Retrieves a work item from the current Collection by ID.
 ```
 var myWorkitem = store.GetWorkItem(42);
 ```
+
 
 ## MakeNewWorkItem methods
 Add a new WorkItem to current Collection.
@@ -37,7 +43,7 @@ Both methods require specifying the new work item's type.
 
 The new work item Fields have default values; it is not committed to the database until all the rules have fired and Aggregator returns control to TFS.
 
-<!--
+
 ## GetGlobalList method
 Retrieves the collection of items for the named Global List.
 
@@ -46,4 +52,3 @@ var items = store.GetGlobalList("Aggregator - UserParameters");
 ```
 
 > The global list name must be unique per-collection.
--->

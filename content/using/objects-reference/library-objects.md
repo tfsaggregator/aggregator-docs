@@ -4,7 +4,7 @@ next: /using/policy-examples
 prev: /using/objects-reference/logger-object
 icon: "-&nbsp;"
 title: Library Objects
-weight: 244
+weight: 245
 ---
 
 Library of utility functions. (**v2.2**)
