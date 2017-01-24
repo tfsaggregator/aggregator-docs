@@ -1,7 +1,7 @@
 ---
 toc: true
 next: /admin/
-prev: /using/scripting-pitfalls
+prev: /using/field-history
 title: Upgrading from v1
 weight: 280
 ---

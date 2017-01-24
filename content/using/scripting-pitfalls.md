@@ -1,6 +1,6 @@
 ---
 toc: true
-next: /using/history-field
+next: /using/field-history
 prev: /using/scripting-tricks-n-tips
 title: Common Pitfalls
 weight: 270
@@ -35,4 +35,4 @@ If the Rule changes any field, you have this:
  6. Aggregator notices the edit and save the workitem to the database
  7. TFS triggers Aggregator again (maybe on a different machine), this time `Revision` property is `9`
  
-See [History field](/using/history-field) for full presentation.
+See [History field](/using/field-history) for full presentation.
