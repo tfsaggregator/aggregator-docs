@@ -75,6 +75,7 @@ Note that you can use the [`logger` object](/using/objects-reference/logger-obje
 ## Production Logging (2.1)
 
 TFS Aggregator log messages go to:
+
 - Debug output (appers in the Output window of a debugger)
 - Application EventLog (_TFS Aggregator_ source) when message level is `Warning` or `Critical`
 - Trace listeners
