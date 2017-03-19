@@ -83,6 +83,20 @@ Add an hyperlink to an URL.
 self.AddHyperlink("https://github.com/tfsaggregator/tfsaggregator", "Automatically added");
 ```
 
+## RemoveWorkItemLink method (**v2.3**)
+Remove a link to another work item.
+```
+foreach (var link in self.WorkItemLinks) {
+   if (link.Target.Id == 1) {
+       logger.Log(
+           "RemoveLinkRule removing {0} to #{1}"
+           , link.LinkTypeEndImmutableName, link.Target.Id);
+       self.RemoveWorkItemLink(link);
+       break;
+   }
+}
+```
+
 ## History and related properties
 `self` offers the [`History`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.history.aspx),
 [`RevisedDate`](https://msdn.microsoft.com/en-us/library/microsoft.teamfoundation.workitemtracking.client.workitem.reviseddate.aspx)
