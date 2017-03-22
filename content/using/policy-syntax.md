@@ -67,17 +67,6 @@ Valid values are:
     * `PS`,`POWERSHELL` -- *Experimental*!
 
 ```
-        <server baseUrl="http://localhost:8080/tfs" />
-```
-
-**server**: Define server configuration. (2.1, Once, Optional)
-
- - **baseUrl**: Forces the URL that Aggregator use to access TFS. (Optional)
- Can be useful is TFS is misconfigured, or you have some special requirements.
- Avoid to use if possibile.
-
-
-```
         <authentication autoImpersonate="true" />
         <authentication personalToken="abcd1234654sdfsfsdfs45645654645" />
         <authentication username="user1" password="password1" />
@@ -89,6 +78,17 @@ Valid values are:
  - **personalToken**: A Personal Access Token. (WebService, Optional)
  - **username**: A Username. (WebService, Optional)
  - **password**: A Password in clear text. (WebService, Optional)
+
+```
+        <server baseUrl="http://localhost:8080/tfs" />
+```
+
+**server**: Define server configuration. (2.1, Once, Optional)
+
+ - **baseUrl**: Forces the URL that Aggregator use to access TFS. (Optional)
+ Can be useful is TFS is misconfigured, or you have some special requirements.
+ Avoid to use if possibile.
+
 
 ```
     <snippet name="MySnippet">
