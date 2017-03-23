@@ -13,6 +13,8 @@ It exposes two static methods `SendMail` and `GetEmailAddress`.
 ## GetEmailAddress
 Retrieve the email address for a user.
 
+> Caveat: **This method works only in the Server Plugin**
+
 You can use the DOMAIN\user form,
 ```
 string email = Library.GetEmailAddress("WIN-3H7CMUV7KDM\\User1", "does-not-exists@example.com");
@@ -25,6 +27,8 @@ string email = Library.GetEmailAddress("User One", "does-not-exists@example.com"
 
 ## SendMail
 Send an email using TFS current configuration.
+
+> Caveat: **This method works only in the Server Plugin**
 
 ```
 string to = "test@example.com";
