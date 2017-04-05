@@ -15,7 +15,7 @@ The `samples\TFSAggregator2.ServerPlugin.policies` should be your **starting poi
 From time to time, we test the policies contained in the `ManualTests` folder. They are good to learn but should not be trusted 100%, at least until we are able to setup automated integration testing.
 
 
-## Example Aggregations
+## Simple rules
 
 ### Calculated field
 
@@ -28,7 +28,7 @@ From time to time, we test the policies contained in the `ManualTests` folder. T
 This aggregation will total the values found in the Estimated Dev Work and Estimated Test Work fields for any Task work item.
 The total will be placed in the Estimated Work field on the same work item as the source values were found.
 
-![Calculated field in form](./calculated-field.png)
+![Calculated field in form](../calculated-field.png)
 
 ### Rollup field on parent
 
@@ -57,21 +57,3 @@ var child in self.Children.Where(
       field => field.ReferenceName == "Custom.Product")
 );
 ```
-
-
-## Using Linq to Aggregate
-
-```
-<rule name="RollupTask" appliesTo="Task"><![CDATA[
-if (self.HasParent())
-{
-    var parent = self.Parent;
-    parent["Microsoft.VSTS.Scheduling.CompletedWork"] = parent.Children.Sum(task => task.GetField<double>("Microsoft.VSTS.Scheduling.CompletedWork", 0d));
-    parent["Microsoft.VSTS.Scheduling.RemainingWork"] = parent.Children.Sum(task => task.GetField<double>("Microsoft.VSTS.Scheduling.RemainingWork", 0d));
-    parent["Microsoft.VSTS.Scheduling.OriginalEstimate"] = parent.Children.Sum(task => task.GetField<double>("Microsoft.VSTS.Scheduling.OriginalEstimate", 0d));
-}
-]]></rule>
-```
-
-This rule updates a Product Backlog Item or Bug whenever any child Task is added or changes. The _Completed Work_, _Remaining Work_ and _Original Estimate_ on the parent become the sum of the corresponding fields of children Tasks.
-Note that children Bug or Test Case do not update the parent.

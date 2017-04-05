@@ -1,13 +1,13 @@
 ---
 toc: true
-next: /using/examples/auto-create-children
-prev: /using/policy-examples
-title: Auto-Open and Auto-Close
-weight: 251
+prev: /using/examples/auto-create-children
+next: /using/examples/rollup
+title: Auto-Open and Auto-Close example
+icon: "-&nbsp;"
+weight: 253
 ---
 
-# Example: Auto-open, Auto Close
-*Process template:* Scrum
+Applies to *Scrum Process template*
 
 ```
 <rule name="AutoOpen" appliesTo="Task">

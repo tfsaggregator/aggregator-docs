@@ -1,8 +1,9 @@
 ---
 toc: true
-next: /using/scripting-tricks-n-tips
-prev: /using/examples/auto-open-auto-close
-title: Auto-Create Children
+prev: /using/examples/accumulate-to-grand-parent
+next: /using/examples/auto-open-auto-close
+title: Auto-Create Children example
+icon: "-&nbsp;"
 weight: 252
 ---
 
