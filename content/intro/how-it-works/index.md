@@ -22,6 +22,8 @@ The common scenario is:
 
 Note that steps 3 and 5 requires authentication.
 
+![Web Service Authentication](./webservice-authentication.jpg)
+
 ## Server Plugin
 
 The following diagram may help understand the control flow.

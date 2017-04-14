@@ -1,7 +1,7 @@
 ---
 title: "Security"
-weight: 340
-prev: /admin/troubleshooting
+weight: 350
+prev: /admin/support
 next: /contrib
 toc: true
 ---

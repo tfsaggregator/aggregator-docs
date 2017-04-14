@@ -9,6 +9,7 @@ toc: true
 > This information does **not** apply to the Web Service version.
 
 ## Pre-requisites
+
 ### TFS ###
 
 The TFS Aggregator works with the following versions of TFS:
@@ -17,6 +18,7 @@ The TFS Aggregator works with the following versions of TFS:
  * TFS 2015 RTM
  * TFS 2015 update 1,2,3
  * TFS 2017 RTM
+ * TFS 2017 update 1
 
 The installer will detect the correct TFS version and will install the appropriate binary. If you're upgrading, please uninstall your current TFS Aggregator version, upgrade TFS, then run the installer to automatically install the matching version.
 
@@ -52,7 +54,7 @@ The installer detects the TFS version installed and deploy the correct assemblie
 It will install under `%ProgramFiles%`, typically `C:\Program Files\TFS Aggregator`, three folders: `bin`, `docs` and `samples`.
 ![](./program-files.png)
 
-Furthermore it installs the plugin in the proper directory &mdash; for TFS 2015 can be `C:\Program Files\Microsoft Team Foundation Server 14.0\Application Tier\Web Services\bin\Plugins` &mdash; the plugin assemblies and the default no-op Policy file `samples\TFSAggregator2.ServerPlugin.policies`.
+Furthermore it installs the plugin in the proper directory &mdash; for TFS 2017 can be `C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\bin\Plugins` &mdash; the plugin assemblies and the default no-op Policy file `samples\TFSAggregator2.ServerPlugin.policies`.
 > **An existing Policy file is not overwritten.**
 
 
@@ -69,8 +71,8 @@ To configure Aggregator you must add new rules in the policy file.
  
  1. Edit a copy of the sample `TFSAggregator2.ServerPlugin.policies` file.
  2. Test your new policy using `TFSAggregator2.ConsoleApp.exe` command line tool
- 3. Copy the new file to the plugin folder; usually at this path for TFS 2015:
-    `C:\Program Files\Microsoft Team Foundation Server 14.0\Application Tier\Web Services\bin\Plugins` 
+ 3. Copy the new file to the plugin folder; usually at this path for TFS 2017:
+    `C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\bin\Plugins` 
  4. Verify that your new policy works; see [TFS Aggregator Troubleshooting](/admin/troubleshooting) in case of problems.
 
 See [Console Application](/admin/console-app) for more information on using the command line tool.
@@ -86,8 +88,10 @@ When upgrading from/to specific versions, you need to uninstall TFS aggregator b
 * TFS 2015 RTM
  * to TFS 2015 update 3
  * to TFS 2017 RTM
+ * to TFS 2017 update 1
 * TFS 2015 Update 3
- * to TFS 2017
+ * to TFS 2017 RTM
+ * to TFS 2017 update 1
 
 An uninstall+reinstall is required, repairing may not work. TFS will detect the incompatibility and will not load the plugin if the version mismatches.
 
@@ -105,7 +109,7 @@ An uninstall+reinstall is required, repairing may not work. TFS will detect the 
 New-EventLog -LogName "Application" -Source "TFSAggregator"
     ```
  5. Copy `TFSAggregator2.ServerPlugin.dll`, `TFSAggregator2.Core.dll` and `TFSAggregator2.ServerPlugin.policies` to the plugin location on the Application Tier of your TFS Servers:
-     - The plugin folder is usually at this path for TFS 2015: `C:\Program Files\Microsoft Team Foundation Server 14.0\Application Tier\Web Services\bin\Plugins`;
+     - The plugin folder is usually at this path for TFS 2017: `C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\bin\Plugins`;
      - You must copy the exact same files on all TFS Application Tier servers.
 
 TFS detects automatically that a file was copied in and will load it in.
@@ -113,7 +117,7 @@ TFS detects automatically that a file was copied in and will load it in.
 You can verify if assembly version matches TFS version using this Powershell code
 
 ```
-$pathToAssemblyFile = "C:\Program Files\Microsoft Team Foundation Server 14.0\Application Tier\Web Services\bin\Plugins\TFSAggregator2.ServerPlugin.dll"
+$pathToAssemblyFile = "C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\bin\Plugins\TFSAggregator2.ServerPlugin.dll"
 [System.Reflection.Assembly]::LoadFile($pathToAssemblyFile).GetCustomAttributesData() | ?{ $_.AttributeType -eq [System.Reflection.AssemblyConfigurationAttribute] } | select ConstructorArguments
 ```
 
