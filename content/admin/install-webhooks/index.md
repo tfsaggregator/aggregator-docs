@@ -6,6 +6,8 @@ next: /admin/console-app
 toc: true
 ---
 
+> This information does **not** apply to theServer Plugin version.
+
 Installing TFS Aggregator Web Service is a six step process:
 
  1. [Grant access to VSTS/TFS](#grant-access-to-vststfs)
@@ -13,8 +15,7 @@ Installing TFS Aggregator Web Service is a six step process:
  3. [Configure TFS Aggregator](#configure-tfs-aggregator)
  4. [Define the policy](#define-the-policy)
  5. [Setup logging (optional)](#setup-logging-optional)
- 6. [Setup the Web Hooks in TFS/VSTS](#setup-the-web-hooks-in-tfsvsts)
-
+ 6. [Setup the Web Hooks in TFS/VSTS](#setup-the-web-hooks-in-tfs-vsts)
 
 
 ## Grant access to VSTS/TFS
@@ -135,23 +136,7 @@ In the policies you may have to set the credentials chosen in the first step, e.
 ## Setup logging (optional)
 
 This step is not mandatory, but recommended in the initial phase.
-
-In the [Azure Portal](https://portal.azure.com/) navigate to **App Services** and select the App Service hosting TFS Aggregator. Scroll down to **Diagnostic logs** and turn on **Application Logging**.
-
-![](./3-log1.png)
-
-Select the Verbosity level and save.
-
-> You can store the logs in Azure storage for auditing.
-
-In the Kudu console navigate to the `LogFiles\Application` folder to find the log files produced by TFS Aggregator.
-
-![](./3-log2.png)
-
-By opening the file you see a snapshot of log file's content.
-
-![Content of a log file](./3-log3.png)
-
+See [Capturing Log On Azure](/admin/logging/#capturing-log-on-azure).
 
 
 ## Setup the Web Hooks in TFS/VSTS

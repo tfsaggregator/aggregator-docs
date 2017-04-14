@@ -2,7 +2,7 @@
 title: "Using the console to test Policies"
 weight: 320
 prev: /admin/install-webhooks
-next: /admin/troubleshooting
+next: /admin/logging
 toc: true
 ---
 The `TFSAggregator2.ConsoleApp.exe` command line tool is extremely useful to test and validate

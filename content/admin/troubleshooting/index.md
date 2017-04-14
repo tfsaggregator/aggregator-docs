@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
-weight: 330
-prev: /admin/console-app
+weight: 340
+prev: /admin/logging
 next: /admin/support
 toc: true
 ---
@@ -72,89 +72,3 @@ TFSAggregator2.ConsoleApp.exe run --logLevel=diagnostic --policyFile=samples\TFS
 ```
 
 See [Console Application](/admin/console-app) for more information on using the command line tool.
-
-
-## Enable Debug Logging
-
-You can also enable Logging. There are two parts to enable logging.
-
-The first is that you have to set a `level` attribute to the `logging` element in your `TFSAggregator2.ServerPlugin.policies` file.
-Use a value like `Verbose` or `Diagnostic`.
-
-```
-<?xml version="1.0" encoding="utf-8"?>
-<AggregatorConfiguration>
-    <runtime>
-        <logging level="Diagnostic"/>
-    </runtime>
-```
-
-Note that you can use the [`logger` object](/using/objects-reference/logger-object/) in your rules to trace execution and  values.
-
-### Capturing log on TFS
-
-Then you need to download [**DebugView**](https://technet.microsoft.com/en-us/sysinternals/debugview.aspx) from Microsoft's SysInternals site.
-
-DebugView is a Trace Listener and will capture the trace messages from TFSAggregator.
-![TFSAggregator messages in DebugView](./messages-in-dbgview.png)
-
-> **You have to run DebugView on _all_ TFS Application Tier machines**.
-
-We would recommend adding the `*TFSAggregator*` filter to DebugView so that you only see the TFSAggregator traces.
-
-![](./dbg-view-filter.png)
-
-Make sure to enable the **Capture Global Win32** option.
-Download DebugView at <http://technet.microsoft.com/en-us/sysinternals/bb896647>.
-
-### Capturing log on Azure
-
-See [Setup logging](/admin/install-webhooks/#setup-logging-optional).
-
-
-## On-premise Production Logging (2.1)
-
-TFS Aggregator log messages go to:
-
-- Debug output (appers in the Output window of a debugger)
-- Application EventLog (_TFS Aggregator_ source) when message level is `Warning` or `Critical`
-- Trace listeners
-
-User messages -- i.e. `logger.Log` calls in Rules -- use a specific Trace source: `TfsAggregator.User`.
-
-Now, you can send traces to a file by adding to TFS `web.config` a `system.diagnostics` section similar to the this:
-
-```
-<system.diagnostics>
-  <sources>
-    <source name="TfsAggregator.ServerPlugin" switchValue="All">
-      <listeners>
-        <remove name="Default" />
-        <add name="filelog" />
-      </listeners>
-    </source>
-    <source name="TfsAggregator.User" switchValue="All">
-      <listeners>
-        <remove name="Default" />
-        <add name="filelog" />
-      </listeners>
-    </source>
-  </sources>
-  <sharedListeners>
-    <add name="filelog"
-         type="Microsoft.VisualBasic.Logging.FileLogTraceListener, 
-                   Microsoft.VisualBasic, Version=10.0.0.0, 
-                   Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-         BaseFileName="TfsAggregator.log"
-         DiskSpaceExhaustedBehavior="ThrowException"
-         Location="Custom"
-         CustomLocation = "C:\Temp"
-         MaxFileSize="81920000"
-         LogFileCreationSchedule="Daily"/>
-  </sharedListeners>
-  <trace autoflush="true"/>
-</system.diagnostics>
-```
-
-TFS web.config is usually located in `C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\web.config` or similar.
-
