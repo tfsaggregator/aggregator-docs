@@ -63,7 +63,7 @@ Always prefer the Immutable name of the Link Type, e.g. `System.LinkTypes.Hierar
 You can use the pre-defined `WorkItemImplementationBase.ChildRelationship` and `WorkItemImplementationBase.ParentRelationship`.
 
 ## AddWorkItemLink methods
-Add a link to another work item.
+Add a link to another work item, the arguments are the linked workitem and the name of Link Type.
 ```
 var parent = self;
 if (!self.HasChildren())
@@ -73,12 +73,12 @@ if (!self.HasChildren())
     child.AddWorkItemLink(parent, WorkItemImplementationBase.ParentRelationship);
 }
 ```
-You can use the pre-defined `WorkItemImplementationBase.ChildRelationship` and `WorkItemImplementationBase.ParentRelationship`.
+You can use the pre-defined `WorkItemImplementationBase.ChildRelationship` and `WorkItemImplementationBase.ParentRelationship` for the name.
 
 > Be careful to use the Immutable name of a Link Type, e.g. `System.LinkTypes.Hierarchy-Reverse`.
 
 ## AddHyperlink method
-Add an hyperlink to an URL.
+Add an hyperlink to an URL, with an optional comment.
 ```
 self.AddHyperlink("https://github.com/tfsaggregator/tfsaggregator", "Automatically added");
 ```
