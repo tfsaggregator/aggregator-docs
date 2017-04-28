@@ -93,37 +93,37 @@ Valid values are:
  Avoid to use if possibile.
 
 
+## snippet sections
+These sections can contains helper code to write the Rules (see below).
+
 ```
     <snippet name="MySnippet">
     </snippet>
 ```
-
-## snippet sections
-These sections can contains helper code to write the Rules (see below).
 
 **snippet**: Represents a code macro rule. (2.2, Repeatable)
 
  - **name**: The name of this code macro. (Mandatory)
 
 
+## functions sections
+These sections can contains helper code to write the Rules (see below).
+
 ```
     <function>
     </function>
 ```
 
-## functions sections
-These sections can contains helper code to write the Rules (see below).
-
 **function**: Contains methods callable from rules. (2.2, Repeatable)
 
+
+## rule sections
+This is the core of this file: these sections contains the Rules applied to work items.
 
 ```
     <rule name="Noop" appliesTo="Task,Bug" hasFields="System.Title,System.Description">
     </rule>
 ```
-
-## rule sections
-This is the core of this file: these sections contains the Rules applied to work items.
 
 **rule**: Represents a single rule. (Repeatable)
 
@@ -138,12 +138,12 @@ This is the core of this file: these sections contains the Rules applied to work
 We recommended using [CDATA](http://www.w3.org/TR/REC-xml/#sec-cdata-sect) to wrap script code.
 See [Scripting](Scripting) for additional details on Rules' code.
 
+## policy sections
+These sections maps rule to Collections and Projects.
+
 ```
     <policy name="DefaultPolicy">
 ```
-
-## policy sections
-These sections maps rule to Collections and Projects.
 
 **policy**: Represent a set of aggregation rules that apply to a particular scope. (Repeatable)
 
