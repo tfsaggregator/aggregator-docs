@@ -6,7 +6,7 @@ title: Configuration XML syntax
 weight: 220
 ---
 
-## Reference to XML syntax of Policies file.
+This page describes the content of a policies file.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -19,6 +19,9 @@ This is the basic beginning to an XML file. Do not change it.
 ```
 
 **AggregatorConfiguration**: The main node for all the configuration options. (Single)
+
+## runtime section
+This section controls general behaviour for TFS Aggregator, e.g. authentication credentials or logging level.
 
 ```
     <runtime debug="False">
@@ -95,6 +98,9 @@ Valid values are:
     </snippet>
 ```
 
+## snippet sections
+These sections can contains helper code to write the Rules (see below).
+
 **snippet**: Represents a code macro rule. (2.2, Repeatable)
 
  - **name**: The name of this code macro. (Mandatory)
@@ -105,6 +111,9 @@ Valid values are:
     </function>
 ```
 
+## functions sections
+These sections can contains helper code to write the Rules (see below).
+
 **function**: Contains methods callable from rules. (2.2, Repeatable)
 
 
@@ -112,6 +121,9 @@ Valid values are:
     <rule name="Noop" appliesTo="Task,Bug" hasFields="System.Title,System.Description">
     </rule>
 ```
+
+## rule sections
+This is the core of this file: these sections contains the Rules applied to work items.
 
 **rule**: Represents a single rule. (Repeatable)
 
@@ -129,6 +141,9 @@ See [Scripting](Scripting) for additional details on Rules' code.
 ```
     <policy name="DefaultPolicy">
 ```
+
+## policy sections
+These sections maps rule to Collections and Projects.
 
 **policy**: Represent a set of aggregation rules that apply to a particular scope. (Repeatable)
 
