@@ -138,6 +138,8 @@ This is the core of this file: these sections contains the Rules applied to work
 We recommended using [CDATA](http://www.w3.org/TR/REC-xml/#sec-cdata-sect) to wrap script code.
 See [Scripting](Scripting) for additional details on Rules' code.
 
+To invoke a [snippet](https://tfsaggregator.github.io/using/policy-syntax/#snippet-sections) the syntax is `${`_nameOfSnippet_`}`.
+
 ## policy sections
 These sections maps rule to Collections and Projects.
 
