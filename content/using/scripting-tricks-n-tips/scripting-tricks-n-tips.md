@@ -69,10 +69,10 @@ The output is sent to debugger output and .Net Trace.
 You can use **DebugView** from Microsoft's SysInternals site at <http://technet.microsoft.com/en-us/sysinternals/bb896647>.
 
 DebugView is a lightweight Trace Listener and will capture the trace messages from TFSAggregator.
-![TFSAggregator messages in DebugView](./messages-in-dbgview.png)
+![TFSAggregator messages in DebugView](../messages-in-dbgview.png)
 
 We would recommend adding the `*TFSAggregator:*` filter to DebugView so that you only see the TFSAggregator traces.
-![](./dbg-view-filter.png)
+![](../dbg-view-filter.png)
 
 Make sure to enable the **Capture Global Win32** option.
 
