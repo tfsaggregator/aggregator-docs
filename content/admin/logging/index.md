@@ -8,6 +8,12 @@ toc: true
 
 TFS Aggregator logging is quite rich but the exact configuration depends on your environment.
 
+
+## Logging levels
+
+The possible Logging levels are: `Critical`, `Error`, `Warning`, `Information` or `Normal`, `Verbose`, and `Diagnostic`.
+
+
 ## Enable Debug Logging
 
 To control the verbosity in TFS Aggregator, you have to set a `level` attribute to the `logging` element in your `TFSAggregator2.ServerPlugin.policies` file.
@@ -24,16 +30,30 @@ Use a value like `Verbose` or `Diagnostic`.
 Note that you can use the [`logger` object](/using/objects-reference/logger-object/) in your rules to trace execution and  values.
 
 
+## Startup logging (2.3)
+
+During TFS Aggregator start, before the Policies file is read, the logging level is controlled by `TFSAggregator2.ServerPlugin.dll.config`, for the Server Plugin, and by `Web.config`, for the Web Service, through the `DefaultLoggingLevel` key in the `appSettings` section, as in this example.
+
+```
+<configuration>
+  <appSettings>
+    <add key="DefaultLoggingLevel" value="Verbose"/>
+  </appSettings>
+</configuration>
+```
+If the file or section is absent, the default value is `Normal`.
+
+
 ## Capturing log on TFS
 
-For TFS on premisses or hosted, you can download [**DebugView**](https://technet.microsoft.com/en-us/sysinternals/debugview.aspx) from Microsoft's SysInternals site.
+For TFS on premises or hosted, you can download [**DebugView**](https://technet.microsoft.com/en-us/sysinternals/debugview.aspx) from Microsoft's SysInternals site.
 
-DebugView is a Trace Listener and will capture the trace messages from TFSAggregator.
+DebugView is a Trace Listener and will capture the trace messages from TFS Aggregator.
 ![TFSAggregator messages in DebugView](./messages-in-dbgview.png)
 
 > **You have to run DebugView on _all_ TFS Application Tier machines**.
 
-We would recommend adding the `*TFSAggregator*` filter to DebugView so that you only see the TFSAggregator traces.
+We would recommend adding the `*TFSAggregator*` filter to DebugView so that you only see the TFS Aggregator traces.
 
 ![](./dbg-view-filter.png)
 
