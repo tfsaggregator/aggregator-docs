@@ -7,12 +7,14 @@ toc: true
 ---
 ## Building the Solution
 
-To rebuild, edit or debug the code you must use Visual Studio 2015, Community or Professional Edition at a minimum.
+To rebuild, edit or debug the code you must use Visual Studio 2017, Community or Professional Edition at a minimum.
 In addition you must install the following extensions from Visual Studio Gallery:
-- WiX 3.10
-- xUnit.net 1.0
 
-TFS is not required to build nor debugging (for this latter you can use [Remote Debugging](https://msdn.microsoft.com/en-us/library/y7f5zaaa.aspx)).
+- xUnit.net 1.0
+- WiX 3.10 (optional)
+
+TFS is not required to build nor debugging if you copy locally the required DLLs (for this latter you can use [Remote Debugging](https://msdn.microsoft.com/en-us/library/y7f5zaaa.aspx)).
+WiX is not required if you use the `build-installer.proj` MSBuild script.
 
 
 ### References
@@ -24,6 +26,7 @@ Building requires a number of TFS assemblies that cannot be redistributed. You c
  - TFS 2015 Update 1: `References/2015.1/PLACEHOLDER.txt`
  - TFS 2015 Update 2: `References/2015.2/PLACEHOLDER.txt`
  - TFS 2017: `References/2017/PLACEHOLDER.txt`
+ - TFS 2017 Update 2: `References/2017.2/PLACEHOLDER.txt`
 
 if you have TFS installed on your development machine, the assemblies for that version will be loaded automatically from the installation folder.
 
@@ -33,6 +36,8 @@ if you have TFS installed on your development machine, the assemblies for that v
 The Build Configuration selected, like _Debug-2013_ or _Release-2015_, determines the target TFS version, that is the referenced assemblies.
 
 Sadly, similar [to the release of TFS 2013 update 2 when there were breaking changes](http://blogs.ripple-rock.com/rorystreet/2014/05/08/WhereIsWorkItemChangedEventInTFS2013Update2.aspx), [TFS 2015 Update 1 introduces a breaking change in the API](http://blogs.msdn.com/b/visualstudioalm/archive/2015/10/13/breaking-change-in-tfs-2015-update-1-for-server-side-plugins.aspx), so you can find some [conditionally compiled](https://msdn.microsoft.com/en-us/library/4y6tbswk.aspx) code based on the symbols `TFS2013`, `TFS2015` or `TFS2015u1`.
+
+See [Supported TFS versions](/intro#supported-tfs-versions) for the full list.
 
 
 ### Version numbers
@@ -49,16 +54,16 @@ The `build-installer.proj` MSBuild script takes care of generating the Windows I
 The MSI packages all three Aggregator flavors, one for each supported TFS version.
 The installer detects the TFS version installed and deploy the correct assemblies.
 
-The MSBuild script builds three times the `TFS-Aggregator-2.sln` solution, one for each supported TFS version.
+The MSBuild script builds multiple times the `tfs-aggregator-plugin.sln` solution, one for each supported TFS version.
 Then the files are copied in a simple layout in the `_collect` folder. Some WiX source is generated and finally the `Setup.Aggregator\Setup.Aggregator.wixproj` is launched to produce the MSI package.
 
-> **Caveat: TFS versions values are all-over the places**, e.g.
+> **Caveat: TFS versions values are in multiple places**, e.g.
 > - source code conditional compile
 > - WiX sources
 > - MSBuild project files
 
 
-To generate the MSI, in an _MSBuild Command Prompt_ (VS2015) or a _Developer Command Prompt_ (VS2013) run
+To generate the MSI, in an _MSBuild Command Prompt_ (VS2015+) or a _Developer Command Prompt_ (VS2013) run
 
 ```
 msbuild build-installer.proj /p:Configuration=Release

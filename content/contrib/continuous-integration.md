@@ -2,7 +2,7 @@
 title: "Continuous Integration"
 weight: 450
 prev: /contrib/debugging
-next: /
+next: /contrib/documentation
 toc: true
 ---
 We moved to [VSTS](https://tfsaggregator.visualstudio.com/) for Continuous Integration.

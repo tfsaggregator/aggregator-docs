@@ -13,6 +13,8 @@ It exposes these methods:
  * `GetWorkItem`
  * `MakeNewWorkItem`
  * `GetGlobalList`
+ * `AddItemToGlobalList` (**v2.3**)
+ * `RemoveItemFromGlobalList` (**v2.3**)
 
 
 ## GetWorkItem method
@@ -49,6 +51,26 @@ Retrieves the collection of items for the named Global List.
 
 ```
 var items = store.GetGlobalList("Aggregator - UserParameters");
+```
+
+> The global list name must be unique per-collection.
+
+
+## AddItemToGlobalList method (**v2.3**)
+Add an element to the named Global List. If the Global List does not exists, it is created.
+
+```
+store.AddItemToGlobalList("Aggregator - UserParameters","userValue1");
+```
+
+> The global list name must be unique per-collection.
+
+
+## RemoveItemFromGlobalList method (**v2.3**)
+Remove an element from the named Global List.
+
+```
+store.RemoveItemFromGlobalList("Aggregator - UserParameters","userValue1");
 ```
 
 > The global list name must be unique per-collection.

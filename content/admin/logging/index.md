@@ -38,6 +38,8 @@ We would recommend adding the `*TFSAggregator*` filter to DebugView so that you 
 ![](./dbg-view-filter.png)
 
 Make sure to enable the **Capture Global Win32** option.
+![](./dbg-view-capture.png)
+
 Download DebugView at <http://technet.microsoft.com/en-us/sysinternals/bb896647>.
 
 

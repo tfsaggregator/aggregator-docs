@@ -83,6 +83,19 @@ Add an hyperlink to an URL, with an optional comment.
 self.AddHyperlink("https://github.com/tfsaggregator/tfsaggregator", "Automatically added");
 ```
 
+## WorkItemLinks property (**v2.3**)
+Collection of existing work item links.
+```
+foreach (var link in self.WorkItemLinks) {
+   if (link.Target.Id == 1) {
+       logger.Log(
+           "RemoveLinkRule removing {0} to #{1}"
+           , link.LinkTypeEndImmutableName, link.Target.Id);
+       break;
+   }
+}
+```
+
 ## RemoveWorkItemLink method (**v2.3**)
 Remove a link to another work item.
 ```

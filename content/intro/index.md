@@ -7,17 +7,15 @@ title: Introduction
 weight: 100
 ---
 
-TFS Aggregator is a extension for Team Foundation Server (TFS) and Visual Studio Team Services (VSTS)
+TFS Aggregator is an extension for Team Foundation Server (TFS) and Visual Studio Team Services (VSTS)
 that enables running custom script when Work Items change,
 allowing dynamic calculation of field values in TFS and more.
 (For example: Dev work + Test Work = Total Work).
 
-You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS 2013 update 2 up to TFS 2017 RTM, or the [**Web Service**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version, for VSTS or TFS 2015 and later.
+You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS, or the [**Web Service**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version, for VSTS or TFS 2015 and later.
 
-> The Web Service version is still in beta.
-
-> TFS Server API changed frequently in the past: the Server Plugin contains specific checks for the TFS version.
-> TFS Aggregator Server Plugin binaries will work only with a specific TFS version.
+> TFS Server API changed frequently in the past: the Server Plugin contains code specific for each TFS version,
+> which means that TFS Aggregator Server Plugin binaries must be build for a specific TFS version.
 
 See the [Changelog](/CHANGELOG/) for an history of releases.
 
@@ -59,31 +57,28 @@ You can pick development binaries directly from VSTS, asking access to the team,
 Is it not working? Here is the troubleshooting and how to get help page: [TFS Aggregator Troubleshooting](/admin/troubleshooting)
 
 
-## Migrating from v2.x
-No action required.
+## Supported TFS versions
+The following table lists the TFS version supported by the Server Plugin.
 
 
-## Migrating from v1
-If you used TFS Aggregator in the past, [here](/using/upgrade-from-v1) are the instructions on switching from older versions.
+|TFS version|Breaking changes|Supported|Build configuration|
+|----------:|:--------------:|:-------:|:------------------|
+| 2013 RTM  |                | **No**  |  n/a              |
+| 2013.5    |   Yes          |  Yes    |  2013             |
+| 2015 RTM  |   Yes          |  Yes    |  2015             |
+| 2015.1    |   Yes          | **No**  |  2015.1           |
+| 2015.2    |   Yes          | **No**  |  2015.2           |
+| 2015.2.1  |                | **No**  |  2015.2           |
+| 2015.3    |                | **No**  |  2015.2           |
+| 2015.4    |                |  Yes    |  2015.2           |
+| 2017 RTM  |   Yes          |  Yes    |  2017             |
+| 2017.1    |                |  Yes    |  2017             |
+| 2017.2    |   Yes          |  Yes    |  2017.2           |
+| 2017.3    |                |_Not yet_|  n/a              |
+| 201x RTM  |                |_Not yet_|  n/a              |
 
-If you're looking for the latest version of V1 (including a large number of fixes and security updates), you can still find it [here](https://github.com/tfsaggregator/tfsaggregator/tree/8ae990810f580c161247a6f6f4720d9b72d98288). 
 
-**Note**: we won't provide any further support on this old version. But if you have a large investment in the old-style rules, it may provide you a better, stabler version until you're ready to move to V2. 
-
-**Note**: You can run both V1 and V2 side-by-side on the same TFS system, you will have to be extra careful not to create infinite loops though.
 
 ## Build and customize
-We used Visual Studio Community Edition 2015 Update 2 to develop this version.
-Compiling requires a number of TFS assemblies that cannot be redistributed. 
-
-You can find the complete list in these files:
-
- - 2013 Update 2 and later: `References/2013/PLACEHOLDER.txt`
- - 2015 RTM: `References/2015/PLACEHOLDER.txt`
- - 2015 Update 1: `References/2015.1/PLACEHOLDER.txt`
- - 2015 Update 2 or 3: `References/2015.2/PLACEHOLDER.txt`
- - 2017 RTM: `References/2017/PLACEHOLDER.txt`
-
-If you have TFS installed on your development machine, the assemblies for that version will be loaded automatically from the installation folder.
-
-More information on customizing and the internal design of TFS Aggregator is [here](/contrib/developer-intro).
+We used Visual Studio Community Edition 2017 Update 2 to develop this version.
+In the [Contributor](/contrib) section you will find all the details to rebuild and customize TFS Aggregator.

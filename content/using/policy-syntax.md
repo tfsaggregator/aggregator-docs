@@ -166,6 +166,7 @@ All scopes must match for the policy to apply (logical _and_).
 ```
 
 **templateScope**: Scope the policy to Team Projects using a particular Process Template. (Optional, Repeatable)
+> DEPRECATED: our implementation does not work with VSTS or recent versions of TFS.
 
  - **name**: Name of Process Template matching. (Mandatory, mutually exclusive with typeid)
 
