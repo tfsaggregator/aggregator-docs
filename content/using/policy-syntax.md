@@ -6,7 +6,7 @@ title: Configuration XML syntax
 weight: 220
 ---
 
-This page describes the content of a policies file.
+This page describes the content of a policy file.
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -21,7 +21,7 @@ This is the basic beginning to an XML file. Do not change it.
 **AggregatorConfiguration**: The main node for all the configuration options. (Single)
 
 ## runtime section
-This section controls general behaviour for TFS Aggregator, e.g. authentication credentials or logging level.
+This section controls general behaviour for TFS Aggregator, e.g. authentication, credentials or logging level.
 
 ```
     <runtime debug="False">
@@ -94,7 +94,7 @@ Valid values are:
 
 
 ## snippet sections
-These sections can contains helper code to write the Rules (see below).
+These sections can contain helper code to write the Rules (see below).
 
 ```
     <snippet name="MySnippet">
@@ -107,7 +107,7 @@ These sections can contains helper code to write the Rules (see below).
 
 
 ## functions sections
-These sections can contains helper code to write the Rules (see below).
+These sections can contain helper code to write the Rules (see below).
 
 ```
     <function>
@@ -118,7 +118,7 @@ These sections can contains helper code to write the Rules (see below).
 
 
 ## rule sections
-This is the core of this file: these sections contains the Rules applied to work items.
+This is the core of this file: these sections contain the Rules applied to work items.
 
 ```
     <rule name="Noop" appliesTo="Task,Bug" hasFields="System.Title,System.Description">
