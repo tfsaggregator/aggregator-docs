@@ -132,7 +132,7 @@ property returns the uniform resource identifier (Uri) of this work item.
 
 Set the state of `self` Work Item.
 
-A Process Templates can limt the possibile transition states, for example
+A Process Templates can limit the possibile transition states, for example
 many templates do not allow you to go directly from a `New` state to a `Done` state.
 With this method TFS Aggregator will cycle the work item through what ever states it needs to to find the **shortest route** to the target state.
 (For most templates that is also the route that makes the most sense from a business perspective too.)
