@@ -30,7 +30,7 @@ var myWorkitem = store.GetWorkItem(42);
 Add a new WorkItem to current Collection.
 
 ```
-var newWorkItem = store.MakeNewWorkItem(self, "Bug");
+var newWorkItem = store.MakeNewWorkItem((string)self["System.TeamProject"], "Bug);
 ```
 
 This syntax will create the new work item in the same TeamProject as `self`.  
