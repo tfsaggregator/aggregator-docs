@@ -10,11 +10,19 @@ weight: 254
 This is an example of automation that allows keep consistency between Remaining Work and Completed Work for Task WI
 
 General Flow: 
-1) Remaining Work decreaed (and Completed Work not changed) => then increase Completed Work accordingly
+1) Remaining Work decreased (and Completed Work not changed) => then increase Completed Work accordingly
 2) Completed Work increased (and remainin Work not changed) => then decrease Remaining Work accordingly
-3) all other cases don't require any modifications as they are threated as reestimation and should follow user decision
+3) All other cases don't require any modifications as they are threated as re-estimation and should follow user decision
 
 Process template: Agile or any template that has RemainingWork and CompletedWork fields for Task WI
+
+**Impersonation in configuration for TFS aggregator should be turned Off to be able identify Real User actions and TFS Aggregator created ones**
+
+**TFSAutomation - should be updated with your user name under which TFS Aggregator is running.**
+```
+<authentication autoImpersonate="false" />
+```
+
 
 ```
 <rule name="LogTimeSynch" appliesTo="Task" hasFields="Microsoft.VSTS.Scheduling.RemainingWork,Microsoft.VSTS.Scheduling.CompletedWork" changes="Change">
@@ -22,7 +30,7 @@ Process template: Agile or any template that has RemainingWork and CompletedWork
 	   var lastRevisionWI = self.LastRevision; 		
 		 var lastChangedBy = self.Fields["System.ChangedBy"].OriginalValue;
 		 logger.Log("This item was before changed by {0}",(string)lastChangedBy);
-		 //Verify that this change was done by User not an Automation Bot under which TFS Aggregator is running (Inpersonation should be turned off in order to face this behavior)
+		 //Verify that this change was done by User not an Automation Bot under which TFS Aggregator is running (Impersonation should be turned off in order to face this behavior)
 		 if ((string)lastChangedBy != "TFSAutomation")
 		  {
 			  // Verify which values were changed: Remaining Time or Completed Time
