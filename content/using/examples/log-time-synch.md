@@ -2,7 +2,7 @@
 toc: true
 prev: /using/examples/auto-open-auto-close
 next: /using/scripting-tricks-n-tips
-title: Remaining Work and Completed Work synchronization
+title: Remaining Work and Completed Work synchronization for Task WI
 icon: "-&nbsp;"
 weight: 254
 ---
