@@ -1,0 +1,20 @@
+# Builds a Hugo web site
+
+variables:
+  hugo_ver: '0.53'
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: |
+    curl -sL https://github.com/gohugoio/hugo/releases/download/v$(hugo_ver)/hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz
+    tar xzf hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz
+  displayName: 'Download Hugo'
+
+- script: |
+    ./hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz/hugo -v -d $(Build.ArtifactStagingDirectory)
+  displayName: 'Generate site'
