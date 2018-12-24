@@ -15,6 +15,10 @@ steps:
     tar xzf hugo_$(hugo_ver).tar.gz
   displayName: 'Download Hugo'
 
-- script: |
+- script:
+    ls -la
+  displayName: 'Dump structure'
+
+- script:
     ./hugo_$(hugo_ver).tar.gz/hugo -v -d $(Build.ArtifactStagingDirectory)
   displayName: 'Generate site'
