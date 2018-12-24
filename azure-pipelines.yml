@@ -17,13 +17,11 @@ steps:
   displayName: 'Download Hugo'
 
 - script:
-    ls -la $(Build.BinariesDirectory)
-  displayName: 'Dump bin structure'
-
-- script:
-    ls -la
-  displayName: 'Dump structure'
-
-- script:
-    $(Build.BinariesDirectory)/hugo_$(hugo_ver).tar.gz/hugo -v -d $(Build.ArtifactStagingDirectory)
+    $(Build.BinariesDirectory)/hugo -v -d $(Build.ArtifactStagingDirectory)
   displayName: 'Generate site'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)' 
+    artifactName: 'site'
+    publishLocation: 'Container'
