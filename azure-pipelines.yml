@@ -11,10 +11,10 @@ pool:
 
 steps:
 - script: |
-    curl -sL https://github.com/gohugoio/hugo/releases/download/v$(hugo_ver)/hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz
-    tar xzf hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz
+    curl -sL https://github.com/gohugoio/hugo/releases/download/v$(hugo_ver)/hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz -o hugo_$(hugo_ver).tar.gz
+    tar xzf hugo_$(hugo_ver).tar.gz
   displayName: 'Download Hugo'
 
 - script: |
-    ./hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz/hugo -v -d $(Build.ArtifactStagingDirectory)
+    ./hugo_$(hugo_ver).tar.gz/hugo -v -d $(Build.ArtifactStagingDirectory)
   displayName: 'Generate site'
