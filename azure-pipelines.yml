@@ -10,6 +10,9 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
+- checkout: self  # self represents the repo where the initial Pipelines YAML file was found
+  submodules: true  # get Hugo theme!
+
 - script: |
     curl -sL https://github.com/gohugoio/hugo/releases/download/v$(hugo_ver)/hugo_extended_$(hugo_ver)_Linux-64bit.tar.gz -o $(Build.BinariesDirectory)/hugo_$(hugo_ver).tar.gz
     cd $(Build.BinariesDirectory)
