@@ -1,7 +1,7 @@
 baseurl = "https://tfsaggregator.github.io/"
 languageCode = "en-us"
-title = "TFS Aggregator Docs"
-theme = "hugo-theme-learn"
+title = "Aggregator"
+theme = "hugo-book"
 metadataformat = "yaml"
 canonifyurls = "true"
 # Enable Google Analytics by entering your tracking id
@@ -9,18 +9,19 @@ googleAnalytics = ""
 enableGitInfo = "true"
 
 [params]
-  search = true
-  # Menu/Chapter ordering
-  menu = [ "intro", "using", "admin", "contrib" ]
-  # Prefix URL to edit current page. Useful to give opportunity to people to create merge request for your doc.
-  editURL = "https://github.com/tfsaggregator/tfsaggregator-docs-hugo/edit/master/content/"
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = true
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo = "https://github.com/tfsaggregator/tfsaggregator-docs-hugo"
+  # Enable 'Edit this page' links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Path must point to the site directory.
+  BookEditPath = 'edit/master/content'
+
   # Author of the site, will be used in meta information
   author = "TFS Aggregator Team"
   # Description of the site, will be used in meta information
-  description = "TFS Aggregator Documentation"
-  # Shows a checkmark for visited pages on the menu. Default to false
-  showVisitedLinks = false
-  # footer version information
-  release = "2.3"
-  # Prefix URL to see the commit for current page.
-  commitBaseUrl = "https://github.com/tfsaggregator/tfsaggregator-docs-hugo/commit/"
+  description = "Aggregator Documentation"

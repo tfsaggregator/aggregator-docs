@@ -1,11 +1,7 @@
 ---
-chapter: true
-toc: true
-icon: <b>3. </b>
-next: /admin/install
-prev: /using/
 title: Administrator Guide
 weight: 300
+bookCollapseSection: true
 ---
 
 ## Administrator Guide to TFS Aggregator

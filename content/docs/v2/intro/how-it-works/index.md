@@ -8,6 +8,8 @@ weight: 110
 
 ## Web Service
 
+> The Web Service is **deprecated**, use [Aggregator CLI](/docs/v3) instead.
+
 Visual Studio Team Services (VSTS) and TFS (2015 and later) can integrate with other systems through [Service hooks](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/get-started).
 TFS Aggregator Web Service leverage the [Web Hooks](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/services/webhooks) variant
 to receive notifications of work items changes in VSTS/TFS.

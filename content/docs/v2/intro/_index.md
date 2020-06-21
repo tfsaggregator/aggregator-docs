@@ -1,23 +1,22 @@
 ---
-chapter: true
-icon: <b>1. </b>
-next: /intro/how-it-works/
-prev: /
 title: Introduction
 weight: 100
+bookCollapseSection: true
 ---
 
-TFS Aggregator is an extension for Team Foundation Server (TFS) and Visual Studio Team Services (VSTS)
+# Introduction to TFS Aggregator
+
+TFS Aggregator is an extension for Team Foundation Server (TFS) and Azure DevOps Server
 that enables running custom script when Work Items change,
 allowing dynamic calculation of field values in TFS and more.
 (For example: Dev work + Test Work = Total Work).
 
-You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS, or the [**Web Service**](https://github.com/tfsaggregator/tfsaggregator-webhooks) version, for VSTS or TFS 2015 and later.
+You can use the [**Server Plugin**](https://github.com/tfsaggregator/tfsaggregator), for TFS or Azure DevOps Server.
 
 > TFS Server API changed frequently in the past: the Server Plugin contains code specific for each TFS version,
 > which means that TFS Aggregator Server Plugin binaries must be build for a specific TFS version.
 
-See the [Changelog](/CHANGELOG/) for an history of releases.
+See the [Changelog](../changelog/) for an history of releases.
 
 ## Example Uses
 
@@ -38,7 +37,7 @@ The latest [Install](https://github.com/tfsaggregator/tfsaggregator/releases) pa
 A manual installation after building from source follows the following process:
 
  1. Download and extract the binaries from the latest release
- 2. Create a file named `TFSAggregator2.ServerPlugin.policies` (or rename one of the existing samples to get started) and change the example settings to your actual settings. [Syntax Example](/using/policy-syntax). 
+ 2. Create a file named `TFSAggregator2.ServerPlugin.policies` (or rename one of the existing samples to get started) and change the example settings to your actual settings. [Syntax Example](../using/policy-syntax). 
  3. Test your policy using the command line tool.
  4. Copy `TFSAggregator2.ServerPlugin.dll`, `TFSAggregator2.Core.dll` and `TFSAggregator2.ServerPlugin.policies` to the plugin location on the Application Tier of your TFS Servers
 
@@ -50,11 +49,11 @@ We ship with an MSI installer which will automatically detect your TFS server fo
 
 
 ## Betas
-You can pick development binaries directly from VSTS, asking access to the team, see [CI build](/contrib/continuous-integration) for details.
+You can pick development binaries directly from VSTS, asking access to the team, see [CI build](../contrib/continuous-integration) for details.
 
 
 ## Troubleshooting
-Is it not working? Here is the troubleshooting and how to get help page: [TFS Aggregator Troubleshooting](/admin/troubleshooting)
+Is it not working? Here is the troubleshooting and how to get help page: [TFS Aggregator Troubleshooting](../admin/troubleshooting)
 
 
 ## Supported TFS versions
@@ -78,7 +77,9 @@ The following table lists the TFS version supported by the Server Plugin.
 | 201x RTM  |                |_Not yet_|  n/a              |
 
 
+> Note: this list may be out of date. Please check 
+
 
 ## Build and customize
 We used Visual Studio Community Edition 2017 Update 2 to develop this version.
-In the [Contributor](/contrib) section you will find all the details to rebuild and customize TFS Aggregator.
+In the [Contributor](../contrib) section you will find all the details to rebuild and customize TFS Aggregator.

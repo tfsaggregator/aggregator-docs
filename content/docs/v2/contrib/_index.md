@@ -1,11 +1,7 @@
 ---
-chapter: true
-toc: true
-icon: <b>4. </b>
-next: /contrib/developer-intro
-prev: /admin/
 title: Contributing
 weight: 400
+bookCollapseSection: true
 ---
 
 ## Contributors' Guide

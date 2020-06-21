@@ -3,13 +3,13 @@
 ## What’s new in v2.3 (RC1)
 
  * Support for TFS 2017 Update 2
- * Reading and removal of Work item Links [`self.WorkItemLinks`]({{< ref "self-object.md#workitemlinks-property-v2-3" >}}) [`self.RemoveWorkItemLink`]({{< ref "self-object.md#removeworkitemlink-method-v2-3" >}})
- * Global List editing with [`AddItemToGlobalList`]({{< ref "store-object.md#additemtogloballist-method-v2-3" >}}) and [`RemoveItemFromGlobalList`]({{< ref "store-object.md#removeitemfromgloballist-method-v2-3" >}})
+ * Reading and removal of Work item Links [`self.WorkItemLinks`](../using/objects-reference/self-object/#workitemlinks-property-v2-3) [`self.RemoveWorkItemLink`](../using/objects-reference/self-object/#removeworkitemlink-method-v2-3)
+ * Global List editing with [`AddItemToGlobalList`](../using/objects-reference/store-object/#additemtogloballist-method-v2-3) and [`RemoveItemFromGlobalList`](../using/objects-reference/store-object/#removeitemfromgloballist-method-v2-3)
  * Startup logging controlled by configuration file
  * Fix SendMail (see [#206](https://github.com/tfsaggregator/tfsaggregator/issues/206))
  * Fix TF26027 error using `TransitionToState` with non-English templates (see [#232](https://github.com/tfsaggregator/tfsaggregator/issues/232))
  * Fix `BasicAuthenticationToken` bug (see [PR #5](https://github.com/tfsaggregator/tfsaggregator-webhooks/pull/5))
- * New code layout, contributors are urged to read [Source Code]({{< ref "source-code.md" >}})
+ * New code layout, contributors are urged to read [Source Code](../contrib/source-code/)
 
 ## What’s new in v2.3 (beta)
 
