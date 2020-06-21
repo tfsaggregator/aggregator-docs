@@ -1,9 +1,9 @@
-![Build badge](https://tfsaggregator.visualstudio.com/_apis/public/build/definitions/2e747373-c780-4b2c-823d-98a3fd2b4e99/8/badge)
+![publish-on-master](https://github.com/tfsaggregator/aggregator-docs/workflows/publish-on-master/badge.svg)
 
-## TFS Aggregator documentation
+## Aggregator documentation
 
-This repository contains the source of TFS Aggregator GitHub Pages.
+This repository contains the source of Aggregator GitHub Pages.
 
-Processing requires [Hugo](https://gohugo.io/) and [hugo-theme-learn](https://github.com/matcornic/hugo-theme-learn) theme.
+Processing requires [Hugo](https://gohugo.io/) and [hugo-book](https://github.com/alex-shpak/hugo-book) theme.
 
 Go to https://tfsaggregator.github.io/ to see the documentation.

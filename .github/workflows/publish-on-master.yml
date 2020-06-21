@@ -1,0 +1,35 @@
+name: publish-on-master
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.71.0'
+          extended: true
+
+      - name: Build
+        run: hugo --minify --enableGitInfo --environment production
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.PUBLISH_ON_MASTER }}
+          external_repository:  tfsaggregator/tfsaggregator.github.io
+          publish_branch: master
+          publish_dir: ./public
+        if: ${{ github.event_name != 'pull_request' }}
