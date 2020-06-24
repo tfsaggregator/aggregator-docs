@@ -457,3 +457,17 @@ The Function logger object is contained in the `logger` variable. It support fou
 - `WriteInfo(message)`
 - `WriteWarning(message)`
 - `WriteError(message)`
+
+## Event [v0.9.11+]
+The `event` variable describes what triggered the rule.
+It can hold one of the following string constants.
+
+```C#
+"workitem.created"
+"workitem.updated"
+"workitem.commented"
+"workitem.deleted"
+"workitem.restored"
+```
+
+This makes easier to write a single rule which reacts to multiple events.
