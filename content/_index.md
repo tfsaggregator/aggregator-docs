@@ -6,14 +6,18 @@ title: 'Aggregator'
 
 # Aggregator CLI
 This is the successor to renowned TFS Aggregator.
-The main scenario for Aggregator (3.x) is supporting Azure DevOps and cloud scenario.
+The main scenario for Aggregator (3.x) is supporting Azure DevOps Services and Azure.
 
 {{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}
+
+{{< button href="/docs/v3" >}}Read the docs{{< /button >}}
 
 
 
 # TFS Aggregator v2
 {{< button href="https://github.com/tfsaggregator/tfsaggregator/releases" class="green" >}}Install plugin{{< /button >}}
+
+{{< button href="/docs/v2" >}}Read the docs{{< /button >}}
 
 
 TFS Aggregator is a extension for Team Foundation Server (TFS) and Azure DevOps Server (**not Service!**) that enables running custom script when Work Items change, allowing dynamic calculation of field values in TFS and more.

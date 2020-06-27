@@ -10,7 +10,7 @@ The Web Service flavour will be discontinued in favour of this new tool for two 
 - deployment and configuration of Web Service was too complex for most users;
 - both the Plugin and the Service rely heavily on TFS Object Model which is [deprecated](https://docs.microsoft.com/en-us/azure/devops/integrate/concepts/wit-client-om-deprecation).
 
-The main scenario for Aggregator (3.x) is supporting Azure DevOps and cloud scenario. In the future, we might support the on-premise scenario to permit replacement of the Server Plugin.
+The main scenario for Aggregator (3.x) is to support Azure DevOps Services and Azure. In the future, we might support the on-premise scenario to permit replacement of the Server Plugin.
 
 
 
@@ -18,25 +18,33 @@ The main scenario for Aggregator (3.x) is supporting Azure DevOps and cloud scen
 
 - use of new Azure DevOps REST API
 - simple deployment via CLI tool
-- Rule object model similar to Aggregator v2
+- Rule object model similar to TFS Aggregator v2
 
+
+
+## Requirements
+
+- an Azure DevOps Services Project
+- a Personal Access Token with sufficient permissions on the Project
+- an Azure Subscription
+- a Service Principal with, at least, Contributor permission on a Resource Group of the Subscription
+- basic knowledge of C# language, Azure Boards and Azure
 
 
 ## How it works
 
-As the name implies, this is a command line tool: you download the latest CLI.zip from GitHub [releases](https://github.com/tfsaggregator/aggregator-cli/releases) and unzip on your client machine.
+As the name implies, this is a command line tool: you download the latest aggregator-cli*.zip appropriate for your platform from GitHub [releases](https://github.com/tfsaggregator/aggregator-cli/releases) and unzip it on your client machine.
 Read more below in the [Usage](#usage) section.
 
-Through the CLI you create one or more Azure Functions in your Subscription. The Functions use the Aggregator **Runtime** to run your **Rules**.
-A Rule is code that reacts to one or more Azure DevOps event.
-The Rule language is only C#, currently.
-When you create an Instance, a Rule or update them, CLI checks GitHub Releases
-to ensure that Aggregator Runtime is up-to-date. You can specify a different Runtime version or point to a specific Runtime package, e.g. on a network share.
+Through the CLI you create one or more Azure Functions in your Subscription. The Functions use a library named Aggregator **Runtime** to run your **Rules**.
+A Rule is code that reacts to one or more Azure DevOps event; currently, the only language for writing rules is C#.
 
-An Aggregator **Mapping** is an Azure DevOps Service Hook triggered by a specific event. Currently we support only Work Item events.
-When triggered the Azure DevOps Service Hook invokes a single Aggregator Rule i.e. the Azure Function hosting the Rule code. Azure DevOps saves the Azure Function Key in the Service Hook configuration.
+The CLI automatically checks GitHub Releases to ensure that you use the more recent version of Aggregator Runtime available. To avoid automatic upgrades, specify the Runtime version or point to a specific Runtime package file, using an `http:` or `file:` URL.
 
-You can deploy the same Rule in different Instances, map the same Azure DevOps event to many Rules or map multiple events to the same Rule: it is up to you choosing the best way to organize.
+After you setup the Rules in Azure, you must add at least one **Mapping**. A mapping is an Azure DevOps Service Hook that send a message to the Azure Function when a specific event occurs. Currently we support only Work Item events.
+When triggered, the Azure DevOps Service Hook invokes a single Aggregator Rule i.e. the Azure Function hosting the Rule code. Azure DevOps saves the Azure Function Key in the Service Hook configuration.
+
+You can deploy the same Rule in different Instances, map the same Azure DevOps event to many Rules or map multiple events to the same Rule: you choose the best way to organize your code.
 
 
 

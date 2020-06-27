@@ -8,22 +8,25 @@ weight: 100
 
 ## Prerequisites
 
-We developed and tested Aggregator on Windows 10 and presumably it works fine on Windows Server 2019. If you find that works on different operating systems, let us know.
+We developed and tested Aggregator on Windows 10 and presumably it works fine on Windows Server 2019. The integration tests runs on Ubuntu so CLI works on Ubuntu too. If you find that works on different operating systems, let us know.
 
 To use Aggregator you need three things:
-- Access to an Azure Subscription
-- Access to an Azure DevOps Organization
-- [.Net Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) installed on the machine where you run Aggregator CLI
+
+- Access to an Azure DevOps Services Organization (or at least a Project)
+- a Personal Access Token with sufficient permissions on the Organization or Project
+- Access to an Azure Subscription (or at least a Resource Group)
+- a Service Principal with, at least, Contributor permission on a Resource Group of the Subscription
+- [.Net Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) runtime installed on the machine where you run Aggregator CLI
 
 Aggregator uses a Service Principal (SP) to interact with Azure. For testing you can grant the SP powerful permissions; in a production scenario, is more typical to create one or more Azure Resource Groups and grant the SP permission to those.
 In addition Aggregator uses an Azure DevOps Personal Access Token (PAT) to create the event subscriptions and interact with object in the target Azure DevOps Project.
 
-These documents will guide you in creating the credentials
-* [Use portal to create an Azure Active Directory application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)        
-* [Create personal access tokens to authenticate access](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
+Production configuration has some additional caveats listed [here](./production/).
 
 
 ## How to create an Azure Service Principal
+
+The below instructions are based on [Use portal to create an Azure Active Directory application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 If you do not have Contributor or Owner permission to the Azure Subscription, ask your administrator to do the instructions that follow.
 
@@ -51,6 +54,8 @@ take note of this information and keep it in a safe place. If you prefer a diffe
 az ad app credential reset --id 12345678-90ab-cdef-1234-567890abcedf --append --password P@ssw0rd!
 ```
 
+> Note: the GUIDs in this section are completely made up. Expect different values when you run the commands.
+
 
 ### Assign permissions to Service Principal
 
@@ -73,8 +78,12 @@ In Azure Portal you can check the permissions in the IAM menu for the selected R
 
 ## Azure DevOps Personal Access Token (PAT)
 
+The below instructions are based on [Create personal access tokens to authenticate access](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
+
 A PAT has the same or less permissions than the person/identity that creates it.
 We recommend that the PAT is issued by an Azure DevOps Organization Administrator Identity.
+
+> Keep in mind that a PAT has a limited timespan and must be periodically renewed. If you don't, the Rules will stop working.
 
 When using the [impersonate directive](../rules/#impersonate-directive), 
 [mapping a rule](../commands/command-examples/#adds-two-service-hooks-to-azure-devops--each-invoking-a-different-rule)
@@ -99,5 +108,4 @@ Careful with the Expiration: Aggregator stores the PAT in the Azure Function con
 
 ## Get the executable
 
-Finally to run Aggregator CLI, download the latest `CLI.zip` file from GitHub [Releases](https://github.com/tfsaggregator/aggregator-cli/releases) and unzip it in a convenient location.
-
+Finally to run Aggregator CLI, download the latest `aggregator-cli*.zip` file from GitHub [Releases](https://github.com/tfsaggregator/aggregator-cli/releases). Select the file appropriate for your platform and unzip it in a convenient location.
