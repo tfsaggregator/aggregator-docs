@@ -60,6 +60,7 @@ az ad app credential reset --id 12345678-90ab-cdef-1234-567890abcedf --append --
 ### Assign permissions to Service Principal
 
 The Service Principal must have Contributor permission to the Azure Subscription or, in alternative, pre-create the Resource Group in Azure and give the service account Contributor permission to the Resource Group.
+
 ![Permission on existing Resource Group](contributor-on-rg.png)
 
 This example creates a Resource Group and gives permission to the Service Principal created in the previous example.

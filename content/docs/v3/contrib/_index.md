@@ -79,7 +79,7 @@ Send the request message at http://localhost:7071/api/test1 using [Postman](http
 
 The Function should log a similar sequence of trace messages.
 
-```
+```log
 [2019-08-19 12:07:04] Initial WorkItem 12345 retrieved from https://dev.azure.com/mytestorg/56789abc-def0-1234-5678-9abcdef01234
 [2019-08-19 12:07:04] Executing Rule...
 [2019-08-19 12:07:06] Rule succeeded with Hello Hazard #12345 - My test Work Item!
@@ -120,7 +120,7 @@ Switch to the **Platform features** tab and click on _Log streaming_ like in the
 Integration tests emulate a user running Aggregator CLI.
 
 These tests require configuration data in `src/integrationtests-cli/logon-data.json` to connect to Azure and Azure DevOps and run the tests.
-```
+```json
 {
 	"subscription": "PUT-AZURE-SUBSCRIPTION-GUID-HERE",
 	"client": "PUT-AZURE-SERVICE-PRINCIPAL-GUID-HERE",
