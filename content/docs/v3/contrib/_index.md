@@ -118,6 +118,62 @@ Switch to the **Platform features** tab and click on _Log streaming_ like in the
 ## Integration tests
 
 Integration tests emulate a user running Aggregator CLI.
+They require a few resources in Azure DevOps and in Azure. The best way to configure them is to use the Terraform scripts in `src\integrationtests-setup`.
+
+### Windows setup
+
+```Powershell
+### install Azure CLI
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'; rm .\AzureCLI.msi
+
+### get terraform
+$v = '0.12.28'
+$p = 'windows_amd64'
+$res = Invoke-WebRequest "https://releases.hashicorp.com/terraform/${v}/terraform_${v}_SHA256SUMS"
+$shaLine = $res.Content -split '\n' | where { $_ -like "*${p}*" }
+$expectedSha = ($shaLine -split '  ')[0]
+Invoke-WebRequest "https://releases.hashicorp.com/terraform/${v}/terraform_${v}_${p}.zip" -o terraform.zip
+$actualSha = (Get-FileHash terraform.zip -Algorithm SHA256).Hash
+if ($expectedSha -ne $actualSha) {
+  throw "SHA does not match!"
+}
+Expand-Archive terraform.zip -DestinationPath .
+Remove-Item terraform.zip
+Set-Alias -Name terraform (Resolve-Path .\terraform.exe)
+```
+
+### Linux setup
+
+```Powershell
+### install Azure CLI
+curl -L https://aka.ms/InstallAzureCli | bash
+
+### get terraform
+$v = '0.12.28'
+$p = 'linux_amd64'
+$res = Invoke-WebRequest "https://releases.hashicorp.com/terraform/${v}/terraform_${v}_SHA256SUMS"
+$shaLine = $res.Content -split '\n' | where { $_ -like "*${p}*" }
+$expectedSha = ($shaLine -split '  ')[0]
+Invoke-WebRequest "https://releases.hashicorp.com/terraform/${v}/terraform_${v}_${p}.zip" -o terraform.zip
+$actualSha = (Get-FileHash terraform.zip -Algorithm SHA256).Hash
+if ($expectedSha -ne $actualSha) {
+  throw "SHA does not match!"
+}
+Expand-Archive terraform.zip -DestinationPath .
+Remove-Item terraform.zip
+chmod +x ./terraform
+Set-Alias -Name terraform (Resolve-Path ./terraform)
+```
+
+### Setup Azure resources
+
+```shell
+cd 'src\integrationtests-setup'
+terraform init
+az login
+terraform plan -out _plan -var 'azdo_personal_access_token=REPLACE_WITH_PAT_HERE'
+terraform apply _plan
+```
 
 These tests require configuration data in `src/integrationtests-cli/logon-data.json` to connect to Azure and Azure DevOps and run the tests.
 ```json
@@ -134,4 +190,4 @@ These tests require configuration data in `src/integrationtests-cli/logon-data.j
 }
 ```
 
-To avoid committing this file in Git, use `git update-index --assume-unchanged src/integrationtests-cli/logon-data.json` and edit the file content 
+To avoid committing this file in Git, use `git update-index --assume-unchanged src/integrationtests-cli/logon-data.json` and edit the file content or better,
