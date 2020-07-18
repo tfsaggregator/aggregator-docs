@@ -27,3 +27,15 @@ help                | Display more information on a specific command.
 version             | Display version information.
 
 You can see a few Command examples in [Sample Aggregator CLI usage](command-examples/).
+
+## Exit codes
+
+Aggregator CLI returns `0` when a command completes successfully. You can check the return code using [`%ERRORLEVEL%`](https://ss64.com/nt/errorlevel.html) in cmd, [`$LastExitCode`](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables) in PowerShell, or [`$?`](https://www.tldp.org/LDP/abs/html/exit-status.html) in bash.
+
+ Exit Code | Meaning
+-----------|---------------------------
+         0 | Command succeeded
+         1 | Command failed
+         2 | Invalid argument(s) or unknown command
+         3 | Specified resource(s) not found e.g. in list commands
+        99 | Unexpected internal error
