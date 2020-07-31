@@ -1,6 +1,6 @@
 ---
 title: 'Examples'
-weight: 220
+weight: 280
 ---
 
 # Sample Aggregator CLI usage
@@ -30,11 +30,12 @@ With `--namingTemplate`, you can specify affixes for all Azure resource that wil
 }
 ```
 
-If you use this, the `--resourceGroup` option is mandatory.
+If you use the `--namingTemplate` option, the `--resourceGroup` option is mandatory.
 
 
 ### Logon
 You are required to log into both Azure and ADO. The credentials are cached locally and expire after 2 hours. _(Replace the below asterisks `*` with valid values.)_
+
 ```Batchfile
 logon.azure --subscription ************ --client ************ --password *********** --tenant ************
 logon.ado --url https://dev.azure.com/youraccount --mode PAT --token ***************************************
@@ -45,11 +46,13 @@ logon.ado --url https://dev.azure.com/youraccount --mode PAT --token ***********
 You need an Azure Function Application plus the Aggregator runtime to execute rules. Both are created by a single call to `install.instance`.
 
 Create a new instance -- and a new resource group -- in the West Europe region.
+
 ```Batchfile
 install.instance --verbose --name my1 --location westeurope
 ```
 
 Create a new instance -- and a new resource group named myRG1 or re-use existing -- in the West Europe region.
+
 ```Batchfile
 install.instance --name my3 --resourceGroup myRG1 --location westeurope --requiredVersion latest
 ```
@@ -63,11 +66,13 @@ install.instance --name my3 --resourceGroup myRG1 --location westeurope --requir
 That is Azure Functions previously created via the CLI.
 
 Search the entire Azure subscription (previously connected to via logon.azure):
+
 ```Batchfile
 list.instances
 ```
 
 Scope search to a particular resource group:
+
 ```Batchfile
 list.instances --resourceGroup myRG1
 ```
