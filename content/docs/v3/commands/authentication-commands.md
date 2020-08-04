@@ -8,7 +8,7 @@ You can a single command, [`logon.env`](#logonenv), or two separate commands, [`
 Use the [`logoff`](#logoff) command to remove any cached authentication data.
 
 ## logon.azure
-Logon into Azure. This must be done before other verbs. Takes four mandatory options.
+Logon into Azure. This must be done before other verbs. The credentials are cached locally and expire after 2 hours. Takes four mandatory options.
 
 Option           | Short form | Description
 -----------------|:-----:|---------
@@ -18,7 +18,7 @@ Option           | Short form | Description
 `--password`     | `-p`  | Service Principal password also known as Client secret.
 
 ## logon.ado
-Logon into Azure DevOps. This must be done before other verbs. Takes three mandatory options.
+Logon into Azure DevOps. This must be done before other verbs. The credentials are cached locally and expire after 2 hours. Takes three mandatory options.
 
 Option          | Short form | Description
 ----------------|:-----:|---------
@@ -26,8 +26,8 @@ Option          | Short form | Description
 `--mode`        | `-m`  | Authentication mode. Currently the only valid mode is `PAT`.
 `--token`       | `-t`  | Azure DevOps Personal Authentication Token.
 
-## logon.env
-Logon into both Azure and Azure DevOps using Environment. It has no specific options. 
+## logon.env [v0.9.14]
+Logon into both Azure and Azure DevOps using Environment. The credentials are cached locally and expire after 2 hours. It has no specific options. 
 
 Environment Variable        | Description
 ----------------------------|-----------------------------------
@@ -39,5 +39,5 @@ Environment Variable        | Description
 `AGGREGATOR_AZDO_MODE`      | Authentication mode. Currently the only valid mode is `PAT`.
 `AGGREGATOR_AZDO_TOKEN`     | Azure DevOps Personal Authentication Token.
 
-## logoff
-Logoff removing any locally cached credential
+## logoff [v0.9.14]
+Logoff removing any locally cached credential.

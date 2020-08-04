@@ -130,7 +130,7 @@ The name of the team member who created the work item.
 The date and time when a work item was created.
 
 `string Description`
-Use this field to provide indepth information about a work item.
+Use this field to provide in-depth information about a work item.
 Caveat: It may contains HTML!
 
 `string History`
@@ -183,7 +183,7 @@ Must use reference name, like _System.Title_, instead of language specific, like
 > Careful: Reference name is **case-sensitive**.
 
 `public T GetFieldValue<T>(string field, T defaultValue)`
-Typed read-only access to non-core fields. The value is converted to the requested type, if the field nas no value, `defaultValue` is returned. Example:
+Typed read-only access to non-core fields. The value is converted to the requested type, if the field has no value, `defaultValue` is returned. Example:
 ```
 var customField1 = self.GetFieldValue<string>("MyOrg.StringCustomField1", "MyDefault");
 var customField2 = self.GetFieldValue<decimal>("MyOrg.NumericCustomField2", 3.0m);
@@ -458,7 +458,7 @@ The Function logger object is contained in the `logger` variable. It support fou
 - `WriteWarning(message)`
 - `WriteError(message)`
 
-## Event [v0.9.11+]
+## Event [v0.9.11]
 The `event` variable describes what triggered the rule.
 It can hold one of the following string constants.
 

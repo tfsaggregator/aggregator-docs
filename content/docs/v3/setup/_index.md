@@ -87,9 +87,9 @@ We recommend that the PAT is issued by an Azure DevOps Organization Administrato
 > Keep in mind that a PAT has a limited timespan and must be periodically renewed. If you don't, the Rules will stop working.
 
 When using the [impersonate directive](../rules/#impersonate-directive), 
-[mapping a rule](../commands/command-examples/#adds-two-service-hooks-to-azure-devops--each-invoking-a-different-rule)
+[mapping a rule](../commands/map-commands/)
 to execute impersonated or 
-[configuring a rule impersonated](../commands/command-examples#),
+[configuring a rule impersonated](../commands/command-examples#execute-impersonated),
 the used identity for creating the PAT must have the permission: 
 "Bypass rules on work item updates"
 

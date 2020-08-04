@@ -73,31 +73,28 @@ To run Aggregator run `aggregator-cli.exe` (Windows), `aggregator-cli` (Linux) o
 
 ### Verbs
 
- Verb               | Use
---------------------|----------------------------------------
-logon.azure         | Logon into Azure. This must be done before other verbs.
-logon.ado           | Logon into Azure DevOps. This must be done before other verbs.
-install.instance    | Creates a new Aggregator instance in Azure. 
-add.rule            | Add a rule to existing Aggregator instance in Azure.
-map.rule            | Maps an Aggregator Rule to existing Azure DevOps Projects, DevOps events are sent to the rule.
-list.instances      | Lists Aggregator instances in the specified Azure Region or Resource Group or in the entire Subscription.
-list.rules          | List the rules in an existing Aggregator instance in Azure.
-list.mappings       | Lists mappings from existing Azure DevOps Projects to Aggregator Rules.
-invoke.rule         | Executes a rule locally or in an existing Aggregator instance.
-configure.instance  | Configures an existing Aggregator instance (currently the Azure DevOps authentication).
-configure.rule      | Change a rule configuration (currently only enabling/disabling).
-update.rule         | Update the code of a rule and/or its runtime.
-unmap.rule          | Unmaps an Aggregator Rule from a Azure DevOps Project.
-remove.rule         | Remove a rule from existing Aggregator instance in Azure, removing any mapping to the Rule.
-uninstall.instance  | Destroy an Aggregator instance in Azure, removing any mapping to the Rules.
-help                | Display more information on a specific command.
-version             | Display version information.
+There are about 20 commands described in detail at [Commands](commands/).
 
-See [Commands](commands/) for further details.
+They can be grouped in a few categories:
+* Authentication to logon into Azure and Azure DevOps.
+* Instance creation, configuration and update.
+* Rule deployment, configuration and update.
+* Mapping from Azure DevOps to Rules.
+* Informational commands, to read configuration.
+* Testing commands to validate configuration.
+
+We collected some usage scenarios at [Command Examples](commands/command-examples/).
 
 
 
 ## Rule language
+
+Currently we offer only C# as the language to write Rules. The Rules can access a few objects:
+* The Current Work Item.
+* Work Item Store to retrieve additional Work Items.
+* The Event which triggered the Rule.
+* Project information.
+* A Logger object to track Rule steps.
 
 See [Rule Language](rules/) for a list of objects and properties to use.
 For examples see [Rule Examples](rules/rule-examples-basic/).

@@ -11,7 +11,7 @@ This is the complete list of Aggregator CLI commands. Click on a link to read a 
 --------------------------------------------|----------------------------------------
 [logon.azure](authentication-commands/)     | Logon into Azure. This must be done before other verbs.
 [logon.ado](authentication-commands/)       | Logon into Azure DevOps. This must be done before other verbs.
-[logon.env](authentication-commands/)       | Logon into both Azure and Azure DevOps using Environment Variables.
+[logon.env](authentication-commands/)       | Logon into both Azure and Azure DevOps using Environment Variables.  [v0.9.14]
 [install.instance](instance-commands/)      | Creates a new Aggregator instance in Azure. 
 [add.rule](rule-commands/)                  | Add a rule to existing Aggregator instance in Azure.
 [map.rule](map-commands/)                   | Maps an Aggregator Rule to existing Azure DevOps Projects, DevOps events are sent to the rule.
@@ -28,8 +28,10 @@ This is the complete list of Aggregator CLI commands. Click on a link to read a 
 [uninstall.instance](instance-commands/)    | Destroy an Aggregator instance in Azure, removing any mapping to the Rules.
 [logoff](authentication-commands/)          | Logoff removing any locally cached credential.
 help                                        | Display more information on a specific command.
+version                                     | Displays the Aggregator version.
 
 You can see a few Command examples in [Sample Aggregator CLI usage](command-examples/).
+
 
 ## Exit codes
 
@@ -42,3 +44,16 @@ Aggregator CLI returns `0` when a command completes successfully. You can check 
          2 | Invalid argument(s) or unknown command
          3 | Specified resource(s) not found e.g. in list commands
         99 | Unexpected internal error
+
+
+### Environment Variables [v0.9.14]
+
+Aggregator CLI collects anonymised telemetry data, to report on which commands and command options are most used.
+
+You can turn off telemetry by setting the `AGGREGATOR_TELEMETRY_DISABLED` to a true value, e.g.
+
+```Batchfile
+AGGREGATOR_TELEMETRY_DISABLED=1
+```
+
+The Runtime Engine, running in the Azure Function, does not collect any telemetry data.
