@@ -1,8 +1,8 @@
 ---
-title: 'Aggregator CLI'
+title: 'Aggregator 3 (CLI)'
 ---
 
-# Aggregator CLI
+# Aggregator 3 (CLI & Docker)
 
 This is the successor to renowned TFS Aggregator.
 The current Server Plugin version (2.x) will be maintained to support TFS.
@@ -10,28 +10,46 @@ The Web Service flavour will be discontinued in favour of this new tool for two 
 - deployment and configuration of Web Service was too complex for most users;
 - both the Plugin and the Service rely heavily on TFS Object Model which is [deprecated](https://docs.microsoft.com/en-us/azure/devops/integrate/concepts/wit-client-om-deprecation).
 
-The main scenario for Aggregator (3.x) is to support Azure DevOps Services and Azure. In the future, we might support the on-premise scenario to permit replacement of the Server Plugin.
+Aggregator 3.x supports two scenarios:
+ 1. Azure DevOps Services with Rules running in Azure Functions.
+ 2. Docker container running in the cloud or on-premise. [v1.0]
 
+The latter permits replacing the Server Plugin after migrating the Rule code.
+
+
+## Releases
+
+Aggregator is evolving rapidly and some feature are not available on older versions.
+A release number like `[v0.9.11]` signals the version when the feature was introduced.
+A complete list of releases including log of changes is [in GitHub](https://github.com/tfsaggregator/aggregator-cli/releases).
 
 
 ## Major features
 
 - use of new Azure DevOps REST API
-- simple deployment via CLI tool
-- Rule object model similar to TFS Aggregator v2
-
+- simple deployment via CLI tool or Docker container
+- Rule language similar to TFS Aggregator v2
 
 
 ## Requirements
 
+To write a Rule is required some basic knowledge of C# language and Azure Boards.
+In addition you need:
 - an Azure DevOps Services Project
 - a Personal Access Token with sufficient permissions on the Project
+
+### CLI & Azure
+The CLI scenario has two additional requirements:
 - an Azure Subscription
 - a Service Principal with, at least, Contributor permission on a Resource Group of the Subscription
-- basic knowledge of C# language, Azure Boards and Azure
+
+### Docker
+The Docker scenario requires:
+- an SSL Certificate
+- an host for Docker containers (Windows or Linux)
 
 
-## How it works
+## How the CLI works with Azure
 
 As the name implies, this is a command line tool: you download the latest aggregator-cli*.zip appropriate for your platform from GitHub [releases](https://github.com/tfsaggregator/aggregator-cli/releases) and unzip it on your client machine.
 Read more below in the [Usage](#usage) section.
@@ -48,7 +66,7 @@ You can deploy the same Rule in different Instances, map the same Azure DevOps e
 
 
 
-## Authentication
+## CLI Authentication
 
 You must instruct Aggregator which credential to use.
 To do this, run the `login.azure` and `login.ado` commands.
@@ -63,15 +81,17 @@ The Service Principal must have Contributor permission to the Azure Subscription
 ![Permission on existing Resource Group](setup/contributor-on-rg.png)
 If you go this route, remember add the `--resourceGroup` to all commands requiring an instance.
 
+For Docker only Azure DevOps logon is required.
 
 
-## Usage
+
+## CLI Usage
 
 Download and unzip the latest CLI.zip file from [Releases](https://github.com/tfsaggregator/aggregator-cli/releases).
 It requires [.Net Core 3.1](https://dotnet.microsoft.com/download/dotnet-core/3.1) installed on the machine.
 To run Aggregator run `aggregator-cli.exe` (Windows), `aggregator-cli` (Linux) or `dotnet aggregator-cli.dll` followed by a verb and its options.
 
-### Verbs
+### CLI Verbs
 
 There are about 20 commands described in detail at [Commands](commands/).
 
@@ -83,7 +103,21 @@ They can be grouped in a few categories:
 * Informational commands, to read configuration.
 * Testing commands to validate configuration.
 
+Most commands manage Azure Function, but a few can be used in the Docker scenario.
+
 We collected some usage scenarios at [Command Examples](commands/command-examples/).
+
+
+
+## How the Docker image works
+
+Pull the latest image from [Docker Hub](https://hub.docker.com/repository/docker/tfsaggregator/aggregator3). It works on Linux and Windows.
+Start a container with the image, setting configuration through environment variables.
+The Rules are simply files on a Docker volume that the container uses.
+The container must expose a port reachable from your Azure DevOps instance, either Server or Service.
+Add one or web hook to Azure DevOps using the container URL. Use one Aggregator API Key to authenticate the call. You may use the CLI to add these mappings.
+
+More details at [Docker configuration](setup/docker/)
 
 
 

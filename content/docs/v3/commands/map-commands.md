@@ -27,7 +27,36 @@ Option                  | Short form | Description
 
 The last two permits to filter events before they go out of Azure DevOps.
 
-Finally you can optionally set this.
+Finally, you can optionally set this.
+
+Option                  | Short form | Description
+------------------------|:-----:|---------
+`--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/#impersonate-directive), for details, requires special account privileges.
+
+## map.local.rule [v1.0]
+Maps an Aggregator Rule to existing Azure DevOps Projects. In other words it creates a webhook in Azure DevOps for the selected event and project.
+
+This command fails if the [`Aggregator_SharedSecret`](../commands#shared-secret-v10) is not set or its value does not match the Docker configuration.
+
+These parameters identify the Rule.
+
+Option                  | Short form | Description
+------------------------|:-----:|---------
+`--targetUrl`           | `-t`  | Base Url of an existing Aggregator instance running in Docker (e.g. https://server:5320).
+`--rule`                | `-r`  | The name of an existing Rule to run. The name must match a rule file deployed in the Docker volume.
+
+These parameters identifies the Azure DevOps Project event that will be sent to the Rule.
+
+Option                  | Short form | Description
+------------------------|:-----:|---------
+`--project`             | `-p`  | Name of existing Azure DevOps project.
+`--event`               | `-e`  | Event to emulate: can be `workitem.created` `workitem.updated` `workitem.restored` or `workitem.deleted`.
+`--filterType`          |  n/a  | Filter Azure DevOps event to include only Work Items of the specified Work Item Type.
+`--filterFields`        |  n/a  | Filter Azure DevOps event to include only Work Items with the specified Field(s) changed.
+
+The last two permits to filter events before they go out of Azure DevOps.
+
+Finally, you can optionally set this.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------

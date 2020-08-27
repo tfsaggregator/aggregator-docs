@@ -4,11 +4,19 @@ title: 'Aggregator'
 
 ![Aggregator logo](aggregator.svg)
 
-# Aggregator CLI
+# Aggregator 3
 This is the successor to renowned TFS Aggregator.
-The main scenario for Aggregator (3.x) is supporting Azure DevOps Services and Azure.
+It is a Rule interpreter specifically designed for Azure DevOps. Associate Rules with Work Item changes to automate your workflow, to allow dynamic calculation of field values and more.
+
+
+Aggregator 3.x supports two scenarios:
+-  Azure DevOps Services with Rules running in Azure Functions.
+-  Docker container running in the cloud or on-premise.
+
+The latter permits replacing the Server Plugin after migrating the Rule code.
 
 {{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}
+{{< button href="https://hub.docker.com/r/tfsaggregator/aggregator3" >}}Docker Image{{< /button >}}
 
 {{< button href="/docs/v3" >}}Read the docs{{< /button >}}
 
@@ -22,7 +30,7 @@ The main scenario for Aggregator (3.x) is supporting Azure DevOps Services and A
 
 TFS Aggregator is a extension for Team Foundation Server (TFS) and Azure DevOps Server (**not Service!**) that enables running custom script when Work Items change, allowing dynamic calculation of field values in TFS and more.
 
-You can use the Server Plugin, for TFS 2013 update 2 up to Azure DevOps Server 2019 Update 1.
+You can use the Server Plugin, for TFS 2013 update 2 up to Azure DevOps Server 2020.
 
 > TFS Server API changes frequently: the Server Plugin contains specific code for each TFS version, so the binaries will work only with a specific TFS version. The Web Service has not such a problem.
 
