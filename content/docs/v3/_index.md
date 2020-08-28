@@ -49,7 +49,7 @@ The Docker scenario requires:
 - an host for Docker containers (Windows or Linux)
 
 
-## How the CLI works with Azure
+## How the CLI works with Azure Functions
 
 As the name implies, this is a command line tool: you download the latest aggregator-cli*.zip appropriate for your platform from GitHub [releases](https://github.com/tfsaggregator/aggregator-cli/releases) and unzip it on your client machine.
 Read more below in the [Usage](#usage) section.
@@ -145,4 +145,8 @@ Read [Production Configuration and Administration](setup/production/) for recomm
 ## Troubleshooting
 
 Use the Application Insight instance that was created aside the Azure Function.
+
+
+## Contributing
+
 Details on building your own version and testing are in the [Contribute](contrib/) section.

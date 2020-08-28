@@ -60,12 +60,18 @@ Test the Rules before using the [invoke.rule](../../commands/rule-commands/#invo
 
 ## Test the container
 
-Sample running the container on Windows
+Pull the latest image from Docker Hub using the version matching the operating system.
+
+```bash
+docker pull tfsaggregator/aggregator3:latest
+```
+
+Example of running the container on Windows
 ```bash
 docker run --rm -it -p 5320:5320 -e Aggregator_VstsToken=********  -e ASPNETCORE_Kestrel__Certificates__Default__Password="********"  --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/secrets/,target=c:/secrets --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/rules/,target=c:/rules   tfsaggregator/aggregator3:latest
 ```
 
-Sample running the container on Linux
+Example of running the container on Linux
 ```bash
 docker run --rm -it -p 5320:5320 -e Aggregator_VstsToken=******** -e ASPNETCORE_Kestrel__Certificates__Default__Password="********"  -v /mnt/c/src/github.com/tfsaggregator/aggregator-cli/docker/rules:/rules  -v /mnt/c/src/github.com/tfsaggregator/aggregator-cli/docker/secrets:/secrets   tfsaggregator/aggregator3:latest
 ```
