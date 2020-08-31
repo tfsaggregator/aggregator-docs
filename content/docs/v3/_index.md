@@ -19,6 +19,9 @@ The latter permits replacing the Server Plugin after migrating the Rule code.
 
 ## Releases
 
+{{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}
+{{< button href="https://hub.docker.com/r/tfsaggregator/aggregator3" >}}Docker Image{{< /button >}}
+
 Aggregator is evolving rapidly and some feature are not available on older versions.
 A release number like `[v0.9.11]` signals the version when the feature was introduced.
 A complete list of releases including log of changes is [in GitHub](https://github.com/tfsaggregator/aggregator-cli/releases).
