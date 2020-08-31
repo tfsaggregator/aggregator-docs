@@ -24,7 +24,11 @@ Note that the Rules sharing the same Instance use the same Runtime version.
 ## invoke.rule
 Executes a rule locally or in an existing Aggregator instance emulating a typical message from Azure DevOps.
 
-> CAVEAT: Even when run locally the Rule connects to Azure DevOps, so remember to add the `--dryrun` option unless you want to write the changes back to Azure DevOps.
+{{< hint warning >}}
+**CAVEAT**
+
+Even when run locally the Rule connects to Azure DevOps, so remember to add the `--dryrun` option unless you want to write the changes back to Azure DevOps.
+{{< /hint >}}
 
 ### Common options
 These options defines the payload sent to the Rule.

@@ -25,8 +25,11 @@ An Aggregator Instance is a process that hosts the Rule Interpreter and exposes 
 
 In the cloud scenario it is an Azure Function Application in its own Resource Group,
 sharing the same Azure DevOps Service credential and version of Aggregator Runtime.
-*Note*: The name you pick for the Instance must be **unique** amongst all
+
+{{< hint warning >}}
+The name you pick for the Instance must be **unique** amongst all
 Aggregator Instances in Azure! This is a consequence of the uniqueness of Azure Function Application DNS hostname.
+{{< /hint >}}
 
 You can have more than one Instance, for example a staging instance with limited computational resource and a production instance.
 

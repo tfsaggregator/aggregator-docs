@@ -5,7 +5,9 @@ weight: 910
 
 ## Build and deploy
 
-The `ci.yml` pipeline is encompassing all steps required to publish all Aggregator components. This build is triggered by any push of commits or tags. Some steps and jobs runs only for a tag starting with `v`, others when the build is run on the default master branch: you see a label `v` or `m` or both aside each conditional phase.
+The `ci.yml` pipeline is encompassing all steps required to publish all Aggregator components. This build is triggered by any push of commits or tags as long as they touch the `/src/` directory or a workflow.
+
+Some steps and jobs runs only for a tag starting with `v`, others when the build is run on the default master branch: you see a label `v` or `m` or both aside each conditional phase.
 
 Steps can leverage [dotnet local tools](https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use). Currently we use:
 
@@ -72,11 +74,13 @@ This workflow is triggered by the Publishing of the new GitHub Release.
 
 Uses the `tfx` (aka _TFS Cross Platform Command Line Interface_) to refresh the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=tfsaggregatorteam.aggregator-cli) page for Aggregator using the content of the `/marketplace` directory.
 
+
 ## Twitter
 
 This workflow is triggered by the Publishing of the new GitHub Release.
 
 Use an Action to advertise on [Twitter](https://twitter.com/tfsaggregator) the availability of the new release.
+
 
 ## Documentation
 

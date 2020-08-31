@@ -54,7 +54,9 @@ take note of this information and keep it in a safe place. If you prefer a diffe
 az ad app credential reset --id 12345678-90ab-cdef-1234-567890abcedf --append --password P@ssw0rd!
 ```
 
-> Note: the GUIDs in this section are completely made up. Expect different values when you run the commands.
+{{< hint info >}}
+The GUIDs in this section are completely made up. Expect different values when you run the commands.
+{{< /hint >}}
 
 
 ### Assign permissions to Service Principal

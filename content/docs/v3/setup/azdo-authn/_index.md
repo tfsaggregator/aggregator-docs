@@ -10,7 +10,9 @@ The below instructions are based on [Create personal access tokens to authentica
 A PAT has the same or less permissions than the person/identity that creates it.
 We recommend that the PAT is issued by an Azure DevOps Organization Administrator Identity.
 
-> Keep in mind that a PAT has a limited timespan and must be periodically renewed. If you don't, the Rules will stop working.
+{{< hint danger >}}
+Keep in mind that a PAT has a limited timespan and must be periodically renewed. If you don't, the Rules will stop working.
+{{< /hint >}}
 
 When using the [impersonate directive](../../rules/#impersonate-directive), 
 [mapping a rule](../../commands/map-commands/)

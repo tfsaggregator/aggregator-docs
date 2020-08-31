@@ -92,7 +92,9 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\app
 ```
 
-> **Note** Azure DevOps refuses localhost connections for Web hooks. The container must be exposed using a DNS name.
+{{< hint info >}}
+Azure DevOps refuses localhost connections for Web hooks. The container must be exposed using a DNS name.
+{{< /hint >}}
 
 Try access the `/config/status` endpoint to check connectivity, e.g.
 ```bash
@@ -124,4 +126,6 @@ Variable                                              | Use                     
 `AGGREGATOR_TELEMETRY_DISABLED`                       | Control telemetry                           | `false`                   | `false`
 
 We do not recommend using unsecured HTTP. The certificate should be trusted by the Azure DevOps instance.
+{{< hint info >}}
 Note that the backslash character (`\`) must be doubled for Windows paths.
+{{< /hint >}}

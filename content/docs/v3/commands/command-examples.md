@@ -294,7 +294,11 @@ aggregator-cli logoff
 
 The command will automatically remove any mapping (webhook) in Azure DevOps that use the Instance.
 
-> NOTE: some Azure Resources are not automatically deleted, namely the AppService Plan, the AppInsights instance and the Storage Account. This is deliberate to support audit.
+{{< hint warning >}}
+**Warning**
+
+Some Azure Resources are not automatically deleted, namely the AppService Plan, the AppInsights instance and the Storage Account. This is deliberate to support audit.
+{{< /hint >}}
 
 
 ## Advanced example
@@ -348,7 +352,9 @@ You can see that the resources satisfy the Naming Template.
 
 ![Resources created using Naming Template](../resources-created-using-naming-template.png)
 
-Note that you can scale up or down the compute resources associated with the Plan.
+{{< hint info >}}
+You can scale up or down the compute resources associated with the Plan.
+{{< /hint >}}
 
 ### Add an Aggregator Rule (advanced)
 
@@ -409,7 +415,9 @@ After some time you may want to change a Rule. After testing thoroughly in a dev
 aggregator-cli update.rule --verbose --instance inst3 --resourceGroup RG1 --namingTemplate my-naming-template.json --name smart-hello --file smart-hello-v2.rule
 ```
 
-> Note: updating a Rule may cause downtime.
+{{< hint warning >}}
+Careful: updating a Rule may cause downtime.
+{{< hint >}}
 
 The above command replace the code in-place leaving mappings and configuration unchanged.
 
