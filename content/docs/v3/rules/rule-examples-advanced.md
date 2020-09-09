@@ -1,6 +1,6 @@
 ---
 title: 'Advanced examples'
-weight: 340
+weight: 395
 ---
 
 # Advanced Rule examples

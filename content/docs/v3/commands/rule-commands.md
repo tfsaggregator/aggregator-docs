@@ -45,7 +45,7 @@ Option                  | Short form | Description
 ------------------------|:-----:|---------
 `--dryrun`              | `-d`  | Aggregator will not committing the changes to Azure DevOps.
 `--saveMode`            | `-m`  | Sets the algorithm to save the data changed by Rules back to Azure DevOps.
-`--impersonate`         |  n/a  | Do rule changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/#impersonate-directive), for details, requires special account privileges.
+`--impersonate`         |  n/a  | Do rule changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/directives#impersonate-directive), for details, requires special account privileges.
 
 ### Local Execution
 
@@ -93,7 +93,7 @@ A disabled Azure Function returns an error to Azure DevOps.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--enableImpersonate`   | `-e`  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/#impersonate-directive), for details, requires special account privileges.
+`--enableImpersonate`   | `-e`  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/directives#impersonate-directive), for details, requires special account privileges.
 `--disableImpersonate`  | `-d`  | Disable impersonation.
 
 

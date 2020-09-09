@@ -85,4 +85,4 @@ The VS403351 error happens because Aggregator adds a specific check to the JSON 
   Value = item.Rev
 ```
 
-It can be disabled on a _per rule_ base using the [check revision directive](../rules/#check-revision-directive).
+It can be disabled on a _per rule_ base using the [check revision directive](../rules/directives#check-revision-directive).

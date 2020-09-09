@@ -49,7 +49,7 @@ The API Key values will be used to authenticate the Web Hook call from Azure Dev
 
 ### Shared secret with CLI (optional)
 
-Define the environment variable [`Aggregator_SharedSecret`](../../commands#shared-secret-v10) both at the container and where you launch the CLI.
+Define the environment variable [`Aggregator_SharedSecret`](../../commands/#shared-secret-v10) both at the container and where you launch the CLI.
 This is required to use CLI commands like [`map.local.rule`](../../commands/map-commands/#maplocalrule-v10) to configure Azure DevOps.
 
 ### Volume with Rule files
