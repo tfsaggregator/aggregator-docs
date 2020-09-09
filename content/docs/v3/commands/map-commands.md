@@ -31,12 +31,12 @@ Finally, you can optionally set this.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/#impersonate-directive), for details, requires special account privileges.
+`--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/directives#impersonate-directive), for details, requires special account privileges.
 
 ## map.local.rule [v1.0]
 Maps an Aggregator Rule to existing Azure DevOps Projects. In other words it creates a webhook in Azure DevOps for the selected event and project.
 
-This command fails if the [`Aggregator_SharedSecret`](../commands#shared-secret-v10) is not set or its value does not match the Docker configuration.
+This command fails if the [`Aggregator_SharedSecret`](../../commands/#shared-secret-v10) variable is not set or its value does not match the Docker configuration.
 
 These parameters identify the Rule.
 
@@ -60,7 +60,7 @@ Finally, you can optionally set this.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/#impersonate-directive), for details, requires special account privileges.
+`--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/directives#impersonate-directive), for details, requires special account privileges.
 
 ## unmap.rule
 Unmaps an Aggregator Rule from a Azure DevOps Project by removing the underlying webhook.

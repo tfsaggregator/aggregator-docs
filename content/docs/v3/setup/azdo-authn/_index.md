@@ -14,7 +14,7 @@ We recommend that the PAT is issued by an Azure DevOps Organization Administrato
 Keep in mind that a PAT has a limited timespan and must be periodically renewed. If you don't, the Rules will stop working.
 {{< /hint >}}
 
-When using the [impersonate directive](../../rules/#impersonate-directive), 
+When using the [impersonate directive](../../rules/directives#impersonate-directive), 
 [mapping a rule](../../commands/map-commands/)
 to execute impersonated or 
 [configuring a rule impersonated](../../commands/command-examples#execute-impersonated),

@@ -1,6 +1,6 @@
 ---
 title: 'Basic examples'
-weight: 320
+weight: 390
 ---
 
 # Basic Rule examples
