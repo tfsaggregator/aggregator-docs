@@ -66,15 +66,19 @@ Pull the latest image from Docker Hub using the version matching the operating s
 docker pull tfsaggregator/aggregator3:latest
 ```
 
-Example of running the container on Windows
+Example of running the container.
+{{< tabs "run example" >}}
+{{< tab "Windows" >}}
 ```bash
 docker run --rm -it -p 5320:5320 -e Aggregator_VstsToken=********  -e ASPNETCORE_Kestrel__Certificates__Default__Password="********"  --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/secrets/,target=c:/secrets --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/rules/,target=c:/rules   tfsaggregator/aggregator3:latest
 ```
-
-Example of running the container on Linux
+{{</ tab >}}
+{{< tab "Linux" >}}
 ```bash
 docker run --rm -it -p 5320:5320 -e Aggregator_VstsToken=******** -e ASPNETCORE_Kestrel__Certificates__Default__Password="********"  -v /mnt/c/src/github.com/tfsaggregator/aggregator-cli/docker/rules:/rules  -v /mnt/c/src/github.com/tfsaggregator/aggregator-cli/docker/secrets:/secrets   tfsaggregator/aggregator3:latest
 ```
+{{</ tab >}}
+{{</ tabs >}}
 
 Clearly, replace the asterisks (`********`) with secret values.
 
@@ -112,20 +116,65 @@ Add ` -SkipCertificateCheck` if you are using a self-signed certificate (not rec
 
 The container is configurable using these environment variables.
 
-Variable                                              | Use                                         | Linux Default value       | Windows Default value
-------------------------------------------------------|---------------------------------------------|:-------------------------:|:----------------------------:
-`ASPNETCORE_URLS`                                     | Set the listening port                      | `https://*:5320`          | `https://*:5320`
-`ASPNETCORE_Kestrel__Certificates__Default__Path`     | SSL Certificate                             | `/secrets/aggregator.pfx` | `c:\\secrets\\aggregator.pfx`
-`ASPNETCORE_Kestrel__Certificates__Default__Password` | SSL Certificate password                    |                           |
-`Logging__LogLevel__Aggregator`                       | Level of Application Logging                | `Debug`                   | `Debug`
-`Aggregator_ApiKeysPath`                              | Valid API Keys                              | `/secrets/apikeys.json`   | `c:\\secrets\\apikeys.json`
-`Aggregator_SharedSecret`                             | Shared password to authenticate CLI         |                           |
-`Aggregator_RulesPath`                                | Directory with Rule files                   | `/rules`                  | `c:\\rules`
-`Aggregator_VstsTokenType`                            | Type of Azure DevOps authentication         | `PAT`                     | `PAT`
-`Aggregator_VstsToken`                                | Azure DevOps Personal Authentication Token  |                           |
-`AGGREGATOR_TELEMETRY_DISABLED`                       | Control telemetry                           | `false`                   | `false`
+{{< tabs "env vars" >}}
+{{< tab "Windows" >}}
+
+Variable                                              | Use                                         | Default value
+------------------------------------------------------|---------------------------------------------|----------------------------
+`ASPNETCORE_URLS`                                     | Set the listening port                      | `https://*:5320`
+`ASPNETCORE_Kestrel__Certificates__Default__Path`     | SSL Certificate                             | `c:\\secrets\\aggregator.pfx`
+`ASPNETCORE_Kestrel__Certificates__Default__Password` | SSL Certificate password                    |
+`Logging__LogLevel__Aggregator`                       | Level of Application Logging                | `Debug`
+`Aggregator_ApiKeysPath`                              | Valid API Keys                              | `c:\\secrets\\apikeys.json`
+`Aggregator_SharedSecret`                             | Shared password to authenticate CLI         |
+`Aggregator_RulesPath`                                | Directory with Rule files                   | `c:\\rules`
+`Aggregator_VstsTokenType`                            | Type of Azure DevOps authentication         | `PAT`
+`Aggregator_VstsToken`                                | Azure DevOps Personal Authentication Token  |
+`Aggregator_AzureDevOpsCertificate`                   | Azure DevOps certificate to trust           |
+`AGGREGATOR_TELEMETRY_DISABLED`                       | Control telemetry                           | `false`
+
+{{</ tab >}}
+{{< tab "Linux" >}}
+
+Variable                                              | Use                                         | Default value
+------------------------------------------------------|---------------------------------------------|-------------------------
+`ASPNETCORE_URLS`                                     | Set the listening port                      | `https://*:5320`
+`ASPNETCORE_Kestrel__Certificates__Default__Path`     | SSL Certificate                             | `/secrets/aggregator.pfx`
+`ASPNETCORE_Kestrel__Certificates__Default__Password` | SSL Certificate password                    |
+`Logging__LogLevel__Aggregator`                       | Level of Application Logging                | `Debug`
+`Aggregator_ApiKeysPath`                              | Valid API Keys                              | `/secrets/apikeys.json`
+`Aggregator_SharedSecret`                             | Shared password to authenticate CLI         |
+`Aggregator_RulesPath`                                | Directory with Rule files                   | `/rules`
+`Aggregator_VstsTokenType`                            | Type of Azure DevOps authentication         | `PAT`
+`Aggregator_VstsToken`                                | Azure DevOps Personal Authentication Token  |
+`Aggregator_AzureDevOpsCertificate`                   | Azure DevOps certificate to trust           |`AGGREGATOR_TELEMETRY_DISABLED`                       | Control telemetry                           | `false`
+
+{{</ tab >}}
+{{</ tabs >}}
+
 
 We do not recommend using unsecured HTTP. The certificate should be trusted by the Azure DevOps instance.
 {{< hint info >}}
 Note that the backslash character (`\`) must be doubled for Windows paths.
 {{< /hint >}}
+
+
+### Azure DevOps SSL certificate (optional)
+
+This option is useful if Azure DevOps is using a certificate issued by an internal Certificate Authority (CA).
+Aggregator running in the container trusts only certificate issued by public CAs.
+
+To add a certificate to the trusted roots, copy the `.cer` in the _secrets_ folder and set the `Aggregator_AzureDevOpsCertificate` environment variable to the container internal path, like for Aggregator SSL cert.
+
+Sample run:
+{{< tabs "run example" >}}
+{{< tab "Windows" >}}
+```bat
+docker run --rm -it -p 5320:5320 -e Aggregator_AzureDevOpsCertificate=c:/secrets/myazuredevops.cer -e Aggregator_VstsToken=********  -e ASPNETCORE_Kestrel__Certificates__Default__Password="********"  --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/secrets/,target=c:/secrets --mount type=bind,source=c:/src/github.com/tfsaggregator/aggregator-cli/docker/rules/,target=c:/rules   tfsaggregator/aggregator3:latest
+```
+{{</ tab >}}
+{{< tab "Linux" >}}
+{{</ tab >}}
+{{</ tabs >}}
+
+This will work also for a self-signed certificate.

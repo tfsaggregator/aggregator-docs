@@ -71,3 +71,5 @@ AGGREGATOR_NEW_VERSION_CHECK_DISABLED=1
 #### Shared secret [v1.0]
 
 `Aggregator_SharedSecret` is used by the [`map.local.rule`](map-commands/#maplocalrule-v10) command for initial authentication.
+Use a long complex password.
+This value must be identical on CLI and the Docker container.
