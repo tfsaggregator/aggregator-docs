@@ -5,7 +5,7 @@ weight: 910
 
 ## Build and deploy
 
-The `ci.yml` pipeline is encompassing all steps required to publish all Aggregator components. This build is triggered by any push of commits or tags as long as they touch the `/src/` directory or a workflow.
+The `build-and-deploy.yml` pipeline is encompassing all steps required to publish all Aggregator components. This build is triggered by any push of commits or tags as long as they touch the `/src/` directory or a workflow.
 
 Some steps and jobs runs only for a tag starting with `v`, others when the build is run on the default master branch: you see a label `v` or `m` or both aside each conditional phase.
 
@@ -65,7 +65,10 @@ The tags used for the images are uploaded as build artifacts.
 
 Creates a docker manifest (aka [manifest lists](https://docs.docker.com/engine/reference/commandline/manifest/)) to include both the Windows and Linux image under a single tag and generates the **lastest** image.
 It uses the tags generated in the previous step.
-Finally, the README is published using a jinja2 transformation.
+The images and manifests are published to two Registries:
+ - Docker Hub
+ - GitHub Container Registry
+Finally, the README for DockerHub is published using a jinja2 transformation.
 
 
 ## Visual Studio Marketplace
