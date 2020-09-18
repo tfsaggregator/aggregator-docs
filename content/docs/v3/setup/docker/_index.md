@@ -3,7 +3,7 @@ title: 'Docker configuration'
 weight: 300
 ---
 
-# Docker configuration
+# Docker configuration [v1.0]
 
 
 ## Prerequisites

@@ -15,10 +15,12 @@ Aggregator 3.x supports two scenarios:
 
 The latter permits replacing the Server Plugin after migrating the Rule code.
 
-{{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}
-{{< button href="https://hub.docker.com/r/tfsaggregator/aggregator3" >}}Docker Image{{< /button >}}
+{{< button href="/docs/v3" >}}Read the docs{{< /button >}}  
+&nbsp;  
+{{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}  
+&nbsp;  
+{{< button href="https://hub.docker.com/r/tfsaggregator/aggregator3" >}}Docker Image from DockerHub{{< /button >}} {{< button href="https://github.com/orgs/tfsaggregator/packages/container/package/aggregator3" >}}Docker Image from GitHub Container Registry{{< /button >}}
 
-{{< button href="/docs/v3" >}}Read the docs{{< /button >}}
 
 
 

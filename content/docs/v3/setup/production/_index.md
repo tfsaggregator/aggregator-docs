@@ -1,6 +1,6 @@
 ---
-title: 'Azure Production'
-weight: 210
+title: 'Production on Azure'
+weight: 400
 ---
 
 # Production Configuration and Administration of Azure Functions
