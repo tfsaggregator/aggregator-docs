@@ -94,7 +94,7 @@ if (!children.Any(c => c.Title == "Brand new child"))
 return parent.Title;
 ```
 
-# Iterate Successor Work Items
+## Iterate Successor Work Items
 
 
 ```csharp
@@ -110,3 +110,23 @@ foreach(var successorLink in allWorkItemLinks.Where(link => string.Equals("Syste
 
 return self.Title;
 ```
+
+For additional link types see [here](https://docs.microsoft.com/en-us/azure/devops/boards/queries/link-type-reference).
+
+
+## Iterate linked Test Cases
+
+
+```csharp
+// assume self is a 'User Story'
+var allTests = new List<string>();
+foreach(var testedByLink in self.RelationLinks.Where(link => link.Rel == "Microsoft.VSTS.Common.TestedBy-Forward"))
+{
+    var testCase = store.GetWorkItem(testedByLink);
+    allTests.Add( $"{testCase.Id.Value} - {testCase.Title}" );
+}
+// display the linked test cases
+return string.Join(",\r\n", allTests);
+```
+
+For additional link types see [here](https://docs.microsoft.com/en-us/azure/devops/boards/queries/link-type-reference).

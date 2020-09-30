@@ -10,8 +10,11 @@ weight: 300
 
 ### Azure DevOps PAT
 You must have an Azure DevOps Personal Access Token as described [here](../azdo-authn/) to authenticate against Azure DevOps.
+This is the identity that authenticates and acts on Azure DevOps.
 
 ### SSL Certificate
+Azure DevOps requires TLS encrypted connections to third party. The docker image assumes to find a certificate in the secrets folder to use for HTTPS.
+
 Create / get a certificate in PFX format, name it `aggregator.pfx`.
 If you have a PEM (.pem, .crt, .cer) or PKCS#7/P7B (.p7b, .p7c) file, you can use OpenSSL to produce an equivalent PFX format (e.g. follow this [guide](https://www.ssl.com/how-to/create-a-pfx-p12-certificate-file-using-openssl/)).
 
