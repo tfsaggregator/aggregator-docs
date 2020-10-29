@@ -141,6 +141,8 @@ Option                  | Short form | Description
 ## update.instance
 Updates an existing Aggregator instance in Azure, with latest runtime binaries. It requires one mandatory options.
 
+It is not guaranteed to work across major version of runtime.
+
 Option          | Short form | Description
 ----------------|:-----:|---------
 `--instance`    | `-i`  | The name of an existing Aggregator instance.

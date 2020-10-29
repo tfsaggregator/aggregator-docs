@@ -62,6 +62,22 @@ Option                  | Short form | Description
 ------------------------|:-----:|---------
 `--impersonate`         |  n/a  | Enable the rule to do the changes on behalf of the person triggered the rule execution. See [impersonate directive](../../rules/directives#impersonate-directive), for details, requires special account privileges.
 
+## update.mappings [v1.0.1]
+Updates any mapping from an old Aggregator instance in Azure to a new Aggregator instance in the same Resource Group.
+The destination instance must have at least the same rules with the same names as the old source instance.
+
+This command is useful in two scenarios:
+- migration from an older version of Aggregator or Azure Function runtime, where the [`update.instance`](../instance-commands#updateinstance) falls short;
+- [Blue/green deployment](https://martinfowler.com/bliki/BlueGreenDeployment.html) of rules.
+
+Option                  | Short form | Description
+------------------------|:-----:|---------
+`--sourceInstance`      | `-s`  | The name of an existing Aggregator instance (Azure Function App), where the mappings currently point.
+`--destInstance`        | `-d`  | The name of an existing Aggregator instance (Azure Function App), where the mappings will point if the command is successful.
+`--resourceGroup`       | `-g`  | Azure Resource Group that contains both Aggregator instances.
+`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
+`--project`             | `-p`  | Name of existing Azure DevOps project or the `*` wildcard to select all Projects.
+
 ## unmap.rule
 Unmaps an Aggregator Rule from a Azure DevOps Project by removing the underlying webhook.
 

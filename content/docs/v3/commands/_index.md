@@ -15,7 +15,7 @@ This is the complete list of Aggregator CLI commands. Click on a link to read a 
 [install.instance](instance-commands/#installinstance)          |Azure | Creates a new Aggregator instance in Azure. 
 [add.rule](rule-commands/#addrule)                              |Azure | Add a rule to existing Aggregator instance in Azure.
 [map.rule](map-commands/#maprule)                               |Azure | Maps an Aggregator Rule in Azure to existing Azure DevOps Projects, DevOps events are sent to the rule.
-[map.local.rule](map-commands/#maplocalrule-v10)                    |Docker| Maps an Aggregator Rule hosted in Docker to existing Azure DevOps Projects, DevOps events are sent to the rule. [v1.0]
+[map.local.rule](map-commands/#maplocalrule-v10)                |Docker| Maps an Aggregator Rule hosted in Docker to existing Azure DevOps Projects, DevOps events are sent to the rule. [v1.0]
 [list.instances](info-commands/#listinstances)                  |Azure | Lists Aggregator instances in the specified Azure Region or Resource Group or in the entire Subscription.
 [list.rules](info-commands/#listrules)                          |Azure | List the rules in an existing Aggregator instance in Azure.
 [list.mappings](info-commands/#listmappings)                    |Azure | Lists mappings from existing Azure DevOps Projects to Aggregator Rules.
@@ -24,6 +24,7 @@ This is the complete list of Aggregator CLI commands. Click on a link to read a 
 [update.instance](instance-commands/#updateinstance)            |Azure | Updates the runtime of an Aggregator instance in Azure.
 [configure.rule](rule-commands/#configurerule)                  |Azure | Change a rule configuration (currently only enabling/disabling).
 [update.rule](rule-commands/#updaterule)                        |Azure | Update the code of a rule and/or its runtime.
+[update.mappings](map-commands/#updatemappings-v101)            |Azure | Updates any mapping from an old Aggregator instance in Azure to a new Aggregator instance.
 [unmap.rule](map-commands/#unmaprule)                           |Azure | Removes a mapping to an Aggregator Rule from a Azure DevOps Project.
 [remove.rule](rule-commands/#removerule)                        |Azure | Remove a rule from existing Aggregator instance in Azure, removing any mapping to the Rule.
 [uninstall.instance](instance-commands/#uninstallinstance)      |Azure | Destroy an Aggregator instance in Azure, removing any mapping to the Rules.
