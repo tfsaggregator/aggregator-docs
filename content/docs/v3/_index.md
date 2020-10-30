@@ -17,6 +17,7 @@ Aggregator 3.x supports two scenarios:
 The latter permits replacing the Server Plugin after migrating the Rule code.
 
 
+
 ## Releases
 
 {{< button href="https://github.com/tfsaggregator/aggregator-cli/releases" >}}Download CLI{{< /button >}}
@@ -33,6 +34,13 @@ A complete list of releases including log of changes is [in GitHub](https://gith
 - use of new Azure DevOps REST API
 - simple deployment via CLI tool or Docker container
 - Rule language similar to TFS Aggregator v2
+
+### What you can and cannot do
+
+Aggregator is always 1 save away from the Azure DevOps User Interface: it does not intercept anything. Aggregator is notified _after_ Azure DevOps commits user changes to the database. It can do fancy calculations and can work across hierarchies and queries (which the built-in rules won't allow), but needs additional round-trips to Azure DevOps. Thus it is only reactive and may need a UI refresh for calculations to show up.
+It cannot be used to block updates either. The data has already been saved once the aggregator runs. You could do compensating changes, but can't prevent them.
+When aggregator changes a value, it will also invoke itself once more (it runs on every change), so Aggregator rules must run idempotent.  
+Please go to the [Design](design/) section for further details.
 
 
 ## Requirements
