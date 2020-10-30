@@ -12,6 +12,9 @@ weight: 300
 You must have an Azure DevOps Personal Access Token as described [here](../azdo-authn/) to authenticate against Azure DevOps.
 This is the identity that authenticates and acts on Azure DevOps.
 
+### DNS name
+Azure DevOps Server does not allow web hooks to `localhost`. The container must be accessible through a proper DNS name.
+
 ### SSL Certificate
 Azure DevOps requires TLS encrypted connections to third party. The docker image assumes to find a certificate in the secrets folder to use for HTTPS.
 
