@@ -57,3 +57,13 @@ or in one line
 ```
 .events workitem.created,workitem.updated
 ```
+
+### bypassrules directive [v1.1]
+
+Do not enforce server-side rules associated with the Work Item Type while saving changes.
+By default Aggregator enforces Azure DevOps rules, e.g. a User Story in Agile Process cannot transition directly from New to Closed (see [Workflow states](https://docs.microsoft.com/en-us/azure/devops/boards/work-items/workflow-and-state-categories?view=azure-devops&tabs=agile-process#workflow-states)).
+
+Example
+```
+.bypassrules=true
+```
