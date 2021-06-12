@@ -156,8 +156,7 @@ Read [Production Configuration and Administration](setup/production/) for recomm
 
 ## Troubleshooting
 
-Use the Application Insight instance that was created aside the Azure Function.
-
+Tips and suggestion when things do not work are in the [Troubleshoot](troubleshoot/) section.
 
 ## Contributing
 

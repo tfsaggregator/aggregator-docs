@@ -267,7 +267,8 @@ Returns a list of work item category names with the mapped work item types, see
 
 `IEnumerable<BacklogWorkItemTypeStates> GetBacklogWorkItemTypesAndStates()`
 Returns a list of backlog work item types with their backlog level information and the state to state 
-category mappings, see [BacklogWorkItemTypeStates](#backlogworkitemtypestates)
+category mappings, see [BacklogWorkItemTypeStates](#backlogworkitemtypestates).
+![WorkItemTypes returned by GetBacklogWorkItemTypesAndStates](../GetBacklogWorkItemTypesAndStates.png)
 
 
 

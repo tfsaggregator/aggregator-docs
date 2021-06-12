@@ -5,6 +5,8 @@ weight: 300
 
 # Docker configuration [v1.0]
 
+Please make sure you are familiar with Aggregator design as explained in [Design](../../design/).
+
 
 ## Prerequisites
 
@@ -184,3 +186,22 @@ docker run --rm -it -p 5320:5320 -e Aggregator_AzureDevOpsCertificate=c:/secrets
 {{</ tabs >}}
 
 This will work also for a self-signed certificate.
+
+
+# Checklist for Docker setup [v1.0]
+
+- [ ] DNS entry for Aggregator
+- [ ] generate a valid certificate in `.pfx` format (matches the above)
+- [ ] pull the docker image
+- [ ] prepare `apikeys.json`
+- [ ] copy the pfx and json files above in a **secrets** directory on the docker host
+- [ ] write the rule files (you can test them using the CLI)
+- [ ] copy the rule files in a **rules** directory on the docker host
+- [ ] run the container, mounting both the **secrets** and **rules** directories, and defining the `Aggregator_SharedSecret` environment variable
+
+Now the Aggregator instance running in the container is ready to serve.
+
+- [ ] create a PAT in Azure DevOps
+- [ ] download the CLI on any machine that can see both Azure DevOps and the Aggregator Container
+- [ ] set the `Aggregator_SharedSecret` environment variable in the shell running the CLI
+- [ ] use the `map.local.rule` to setup the WebHook Subscriptions in Azure DevOps
