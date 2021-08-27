@@ -22,12 +22,16 @@ Option                  | Short form | Description
 ------------------------|:-----:|---------
 `--project`             | `-p`  | Name of existing Azure DevOps project.
 `--event`               | `-e`  | Event to emulate: can be `workitem.created` `workitem.updated` `workitem.restored` or `workitem.deleted`.
-`--filterType`          |  n/a  | Filter Azure DevOps event to include only Work Items of the specified Work Item Type.
-`--filterFields`        |  n/a  | Filter Azure DevOps event to include only Work Items with the specified Field(s) changed.
+`--filterType`          |  n/a  | Filters Azure DevOps event to include only Work Items of the specified Work Item Type.
+`--filterFields`        |  n/a  | Filters Azure DevOps event to include only Work Items with the specified Field(s) changed (applies only to `workitem.updated` event).
+`--filterOnlyLinks`     |  n/a  | [v1.2] Filters Azure DevOps event to include only Work Items with added or removed Links (applies only to `workitem.created` and `workitem.updated` events).
 
-The last two permits to filter events before they go out of Azure DevOps.
+The last three permits to filter events before they Azure DevOps sends them to Aggregator.
+They corresponds to elements of the Web Hook dialog.
 
-Finally, you can optionally set this.
+![Subscription dialog elements matching the filter parameters](../service-hook-filters.png)
+
+Finally, you can optionally set this option.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
