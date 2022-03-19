@@ -6,13 +6,10 @@ weight: 900
 ## Build
 
 Building locally requires
-- Visual Studio 2019 with .Net Core 3.1 SDK
+- Visual Studio 2022 with .Net 6.0 SDK
 - Azure Functions and Web Jobs Tools
 
-
-
 ## Debug
-
 
 ### Custom/development Aggregator runtime
 
@@ -104,15 +101,18 @@ The Function should log a similar sequence of trace messages.
 
 ### Debug Aggregator Runtime (live Azure Function)
 
-
 #### View live Aggregator log messages
 
-In Azure Portal, open the Resource Group hosting the Instance (`aggregator-` followed by name of instance).
-Open the App Service hosting the Instance (instance name followed by `aggregator`).
-Switch to the **Platform features** tab and click on _Log streaming_ like in the picture.
-![Log streaming](log-streaming-from-azure-portal.png)
+In Azure Portal, open the Resource Group hosting the Instance (e.g. `aggregator-` followed by name of instance).  
+Open the Function App hosting the Instance (e.g. instance name followed by `aggregator`).
 
+![Sample Resource Group with Aggregator Function App](sample-aggregator-resource-group.png)
 
+Scroll down (1) and select _Log stream_ (2) in the _Monitoring_ group.
+
+![Log stream menu position in Function App](sample-aggregator-function-app-log-streaming-menu.png)
+
+This is useful while developing rules, not in production scenarios.
 
 
 ## Integration tests
