@@ -29,6 +29,7 @@ You can access any of these variable in any rule.
 
 Variable        | Type                      | Description
 ----------------|---------------------------|----------------
+`ruleName`      | `string`                  | Name of rule. [v1.3]
 `eventType`     | `string`                  | Name of event that triggered the rule.
 `logger`        | `IAggregatorLogger`       | offers methods to log messages with different levels.
 
