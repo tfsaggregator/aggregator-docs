@@ -5,9 +5,16 @@ weight: 900
 
 ## Build
 
-Building locally requires
+Building locally requires:
+
 - Visual Studio 2022 with .Net 6.0 SDK
 - Azure Functions and Web Jobs Tools
+
+### Dependencies
+
+The relation between projects (`.csproj`) can be easily explained with this diagram.
+
+![Projects' dependencies](build-dependencies.drawio.png)
 
 ## Debug
 
