@@ -262,6 +262,17 @@ Deletes the given work item and returns `true` if work item can be deleted.
 `bool RestoreWorkItem(WorkItem workItem)`  
 Restores the given work item from recycle bin and returns `true` if work item can be restored.
 
+`bool TransitionToState(WorkItem workItem, string targetState, string comment)` [v1.3]  
+Tries to change the WorkItem state to `targetState`; returns `true` if operation succeeds.
+{{< hint warning >}}
+**CAVEAT**: Even if operation fails (thus returning `false`), the work item may be in a different state from initial call.
+
+Tested only with Inherited Process. Let us know if it works with an XML Process project.
+{{< /hint >}}
+{{< hint info >}}
+TIP: for the _comment_ parameter, you may use `$"Changed by Aggregator in {ruleName}"` or similar message.
+{{< /hint >}}
+
 `IEnumerable<WorkItemTypeCategory> GetWorkItemCategories()`  
 Returns a list of work item category names with the mapped work item types, see [WorkItemTypeCategory](#workitemtypecategory)
 
