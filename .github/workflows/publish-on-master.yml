@@ -12,9 +12,11 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
+
       - uses: actions/checkout@v2
         with:
           submodules: true
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -28,7 +30,7 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{ secrets.PUBLISH_ON_MASTER }}
+          deploy_key: ${{ secrets.GHPAGES_DEPLOYKEY }}
           external_repository:  tfsaggregator/tfsaggregator.github.io
           publish_branch: master
           publish_dir: ./public
