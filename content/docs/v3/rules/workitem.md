@@ -12,10 +12,10 @@ The initial WorkItem object, the one which triggered the rule, is contained in t
 ### Revisions
 Navigate to previous versions of the work item.
 
-`WorkItem PreviousRevision`
+`WorkItem PreviousRevision`  
 Returns a read-only copy of the previous revision of this work item.
 
-`IEnumerable<WorkItem> Revisions`
+`IEnumerable<WorkItem> Revisions`  
 Returns a read-only copy of all revisions of this work item.
 
 
@@ -23,128 +23,128 @@ Returns a read-only copy of all revisions of this work item.
 Navigate to related work items. See also Type [WorkItemRelation](#workitemrelation-type)
 or [WorkItemRelationCollection](#workitemrelationcollection-type)
 
-`IEnumerable<WorkItemRelation> RelationLinks`
+`IEnumerable<WorkItemRelation> RelationLinks`  
 Returns all relations as `WorkItemRelation`.
 
-`WorkItemRelationCollection Relations`
+`WorkItemRelationCollection Relations`  
 Returns a collection to navigate and modify relations.
 
-`IEnumerable<WorkItemRelation> ChildrenLinks`
+`IEnumerable<WorkItemRelation> ChildrenLinks`  
 Returns the children links in Hierarchy relation, i.e. `System.LinkTypes.Hierarchy-Forward`.
 
-`IEnumerable<WorkItem> Children`
+`IEnumerable<WorkItem> Children`  
 Returns the children work items in Hierarchy relation, i.e. `System.LinkTypes.Hierarchy-Forward`. E.g. a _Task_ can be a child of a _User Story_.
 
-`WorkItemRelation ParentLink`
+`WorkItemRelation ParentLink`  
 Returns the parent link in Hierarchy relation, i.e. `System.LinkTypes.Hierarchy-Reverse`.
 
-`WorkItem Parent`
+`WorkItem Parent`  
 Returns the parent work item in Hierarchy relation, i.e. `System.LinkTypes.Hierarchy-Reverse`. E.g. a _User Story_ is the parent of a _Task_.
 
 
 ### Links
 Navigate links to non-work-item objects.
 
-`IEnumerable<WorkItemRelation> RelatedLinks`
+`IEnumerable<WorkItemRelation> RelatedLinks`  
 Returns related work items as `WorkItemRelation`.
 
-`IEnumerable<WorkItemRelation> Hyperlinks`
+`IEnumerable<WorkItemRelation> Hyperlinks`  
 Returns hyperlinks.
 
-`int ExternalLinkCount`
+`int ExternalLinkCount`  
 Returns the number of links to external objects.
 
-`int HyperLinkCount`
+`int HyperLinkCount`  
 Returns the number of hyperlinks.
 
-`int RelatedLinkCount`
+`int RelatedLinkCount`  
 Returns the number of related work items.
 
 
 ### Core Fields helpers
 Data fields of the work item. See [Work item field index](https://docs.microsoft.com/en-us/azure/devops/boards/work-items/guidance/work-item-field?view=vsts) for a complete description.
 
-`int AreaId`
+`int AreaId`  
 The unique ID of the area to which this work item is assigned.
 
-`string AreaPath`
+`string AreaPath`  
 Groups work items into product feature or team areas. The area must be a valid node in the project hierarchy.
 
-`IdentityRef AssignedTo`
+`IdentityRef AssignedTo`  
 The name of the team member who currently owns the work item.
 
-`IdentityRef AuthorizedAs`
+`IdentityRef AuthorizedAs`  
 
-`DateTime? AuthorizedDate`
+`DateTime? AuthorizedDate`  
 
-`IdentityRef ChangedBy`
+`IdentityRef ChangedBy`  
 The name of the team member who modified the work item most recently. 
 
-`DateTime? ChangedDate`
+`DateTime? ChangedDate`  
 The date and time when a work item was modified.
 
-`IdentityRef CreatedBy`
+`IdentityRef CreatedBy`  
 The name of the team member who created the work item.
 
-`DateTime? CreatedDate`
+`DateTime? CreatedDate`  
 The date and time when a work item was created.
 
-`string Description`
+`string Description`  
 Use this field to provide in-depth information about a work item.
 {{< hint info >}}
 Caveat: It may contains HTML!
 {{< /hint >}}
 
-`string History`
+`string History`  
 The record of changes that were made to the work item after it was created.
 
-`int Id` Read-only.
+`int Id` Read-only.  
 The unique identifier that is assigned to a work item.
  Negative when `IsNew` equals `true`.
 
-`int IterationId`
+`int IterationId`  
 The unique ID of the iteration to which this work item is assigned.
 
-`string IterationPath`
+`string IterationPath`  
 Groups work items by named sprints or time periods. The iteration must be a valid node in the project hierarchy.
 
-`string Reason`
+`string Reason`  
 The reason why the work item is in the current state.
 
-`int Rev` Read-only.
+`int Rev` Read-only.  
 A number that is assigned to the historical revision of a work item. 
 
-`DateTime? RevisedDate`
+`DateTime? RevisedDate`  
 The date and time stamp when a test case or shared step is revised.
 
-`string State`
+`string State`  
 The current state of the work item.
 
-`string Tags`
+`string Tags`  
 A tag corresponds to a one or two keyword phrase that you define and that supports your needs to filter a backlog or query, or define a query. 
 
-`string TeamProject`
+`string TeamProject`  
 The project to which a work item belongs.
 
-`string Title`
+`string Title`  
 A short description that summarizes what the work item is and helps team members distinguish it from other work items in a list.
 
 `string Url` Read-only.
 
-`double Watermark` Read-only.
+`double Watermark` Read-only.  
 A system managed field (not editable) that increments with changes made to a work item.
 
-`string WorkItemType` Read-only.
+`string WorkItemType` Read-only.  
 The name of the work item type.
 
 
 ### Fields
-`object this[string field]`
+`object this[string field]`  
 Read-write access to non-core fields.
 Must use reference name, like _System.Title_, instead of language specific, like _Titolo_, _Titel_ or _Title_.
 > Careful: Reference name is **case-sensitive**.
 
-`public T GetFieldValue<T>(string field, T defaultValue)`
+`public T GetFieldValue<T>(string field, T defaultValue)`  
 Typed read-only access to non-core fields. The value is converted to the requested type, if the field has no value, `defaultValue` is returned. Example:
 ```
 var customField1 = self.GetFieldValue<string>("MyOrg.StringCustomField1", "MyDefault");
@@ -166,15 +166,18 @@ How to update its value:
 `bool IsDeleted` Read-only, returns `true` if the work item is currently located
 in recycle bin.
 
-`bool IsReadOnly` Read-only, returns `true` if work item cannot be modified.
+`bool IsReadOnly` Read-only.  
+Returns `true` if work item cannot be modified.
 
-`bool IsNew` Read-only, returns `true` if work item is new.
+`bool IsNew` Read-only.  
+Returns `true` if work item is new.
 
-`bool IsDirty` Read-only, returns `true` if work item changed after retrieval.
+`bool IsDirty` Read-only.  
+Returns `true` if work item changed after retrieval.
 
 
 ### Attachments
-`int AttachedFileCount`
+`int AttachedFileCount`  
 Returns the number of attached files.
 
 
@@ -183,52 +186,52 @@ If the rule was triggered by the `workitem.updated` event, the changes
 which were made to the WorkItem object, are contained in the `selfChanges` variable.
 
 ### Fields
-Data fields of the work item update. 
+Data fields of the work item update.
 
-`int Id` Read-only.
+`int Id` Read-only.  
 The unique identifier of the _Update_.
 Each change leads to an increased update id, but not necessarily to an updated revision number.
 Changing only relations, without changing any other information does not increase revision number.
 
-`int WorkItemId` Read-only.
+`int WorkItemId` Read-only.  
 The unique identifier of the _work item_.
 
-`int Rev` Read-only.
+`int Rev` Read-only.  
 The revision number of work item update.
 
-`IdentityRef RevisedBy` Read-only.
+`IdentityRef RevisedBy` Read-only.  
 The Identity of the team member who updated the work item. 
 
-`DateTime RevisedDate` Read-only.
+`DateTime RevisedDate` Read-only.  
 The date and time when the work item updates revision date.
 
-`WorkItemFieldUpdate Fields[string field]` Read-only. 
+`WorkItemFieldUpdate Fields[string field]` Read-only.  
 Access to the list of updated fields.
 Must use reference name, like _System.Title_, instead of language specific, like _Titolo_, _Titel_ or _Title_.
 
-`WorkItemRelationUpdates Relations` Read-only. 
+`WorkItemRelationUpdates Relations` Read-only.  
 Returns the information about updated relations
 
 ### WorkItemFieldUpdate
 Updated Field Information containing old and new value.
 
-`object OldValue` Read-only. 
+`object OldValue` Read-only.  
 Returns the previous value of the field or `null`
 
-`object NewValue` Read-only. 
+`object NewValue` Read-only.  
 Returns the new value of the field
 
 
 ### WorkItemRelationUpdates
 Groups the changes of the relations
 
-`ICollection<WorkItemRelation> Added` Read-only. 
+`ICollection<WorkItemRelation> Added` Read-only.  
 Returns the added relations as `WorkItemRelation`.
 
-`ICollection<WorkItemRelation> Removed` Read-only. 
+`ICollection<WorkItemRelation> Removed` Read-only.  
 Returns the removed relations as `WorkItemRelation`.
 
-`ICollection<WorkItemRelation> Updated` Read-only. 
+`ICollection<WorkItemRelation> Updated` Read-only.  
 Returns the updated relations as `WorkItemRelation`.
 
 
@@ -237,32 +240,30 @@ Returns the updated relations as `WorkItemRelation`.
 The WorkItemStore object allows retrieval, creation and removal of work items.
 This object is contained in the `store` variable.
 
-`WorkItem GetWorkItem(int id)`
+`WorkItem GetWorkItem(int id)`  
 Returns a single work item.
 
-`WorkItem GetWorkItem(WorkItemRelation item)`
+`WorkItem GetWorkItem(WorkItemRelation item)`  
 Returns a single work item following the relation.
 
-`IList<WorkItem> GetWorkItems(IEnumerable<int> ids)`
+`IList<WorkItem> GetWorkItems(IEnumerable<int> ids)`  
 Returns a list of work items.
 
-`IList<WorkItem> GetWorkItems(IEnumerable<WorkItemRelation> collection)`
+`IList<WorkItem> GetWorkItems(IEnumerable<WorkItemRelation> collection)`  
 Returns a list of work items following the relation.
 
-`WorkItem NewWorkItem(string workItemType)`
+`WorkItem NewWorkItem(string workItemType)`  
 Returns a new work item with a temporary Id. The work item is created when the rules ends.
 `IsNew` returns `true`.
 
-`bool DeleteWorkItem(WorkItem workItem)`
+`bool DeleteWorkItem(WorkItem workItem)`  
 Deletes the given work item and returns `true` if work item can be deleted.
 
-`bool RestoreWorkItem(WorkItem workItem)`
-Restores the given work item from recycle bin and returns `true` if work item 
-can be restored.
+`bool RestoreWorkItem(WorkItem workItem)`  
+Restores the given work item from recycle bin and returns `true` if work item can be restored.
 
-`IEnumerable<WorkItemTypeCategory> GetWorkItemCategories()`
-Returns a list of work item category names with the mapped work item types, see 
-[WorkItemTypeCategory](#workitemtypecategory)
+`IEnumerable<WorkItemTypeCategory> GetWorkItemCategories()`  
+Returns a list of work item category names with the mapped work item types, see [WorkItemTypeCategory](#workitemtypecategory)
 
 
 `IEnumerable<BacklogWorkItemTypeStates> GetBacklogWorkItemTypesAndStates()`
@@ -278,13 +279,13 @@ available categories in query editor:
 
 ![Work Item Category Names](../work-item-categories.png)
 
-`string ReferenceName`
+`string ReferenceName`  
 Category ReferenceName, e.g. "Microsoft.EpicCategory"
 
-`string Name`
+`string Name`  
 Category Display Name, e.g. "Epic Category"
 
-`IEnumerable<string> WorkItemTypeNames`
+`IEnumerable<string> WorkItemTypeNames`  
 WorkItemType Names in this Category, e.g. "Epic" or "Test Plan"
 
 ## BacklogWorkItemTypeStates
@@ -295,13 +296,13 @@ The mappings can be seen per work item template in the states configuration, e.g
 ![Epic: State Category to State Name Mapping](../state-to-state-category-default-agile-epic.png)
 
 
-`string Name`
+`string Name`  
 WorkItem Name, e.g. "Epic"
 
-`BacklogInfo Backlog`
+`BacklogInfo Backlog`  
 [Backlog Level Information](#backloginfo) for this WorkItem Type.
 
-`IDictionary<string, string[]> StateCategoryStateNames`
+`IDictionary<string, string[]> StateCategoryStateNames`  
 State Category (Meta-State) to WorkItem state name mapping.
 
 Example: mapping for the WorkItem Type Epic of default Agile Process:
@@ -320,72 +321,72 @@ Example: The default Agile Backlog level names are: Epics, Features, Stories, Ta
 ![Default Agile Backlog Levels](../backlog-levels-default-agile.png)
 
 
-`string ReferenceName`
+`string ReferenceName`  
 The Category Reference Name of this Backlog Level, e.g. "Microsoft.EpicCategory" or "Microsoft.RequirementCategory"
 
-`string Name`
+`string Name`  
 The Backlog Level Display Name, e.g. "Epics" or "Stories"
 
 ## WorkItemRelationCollection type
 Navigate and modify related objects.
 
-`IEnumerator<WorkItemRelation> GetEnumerator()`
+`IEnumerator<WorkItemRelation> GetEnumerator()`  
 Returns an enumerator on relations to use in `foreach` loops.
 
-`Add(WorkItemRelation item)`
+`Add(WorkItemRelation item)`  
 Adds the element to the collection.
 
-`AddChild(WorkItem child)`
+`AddChild(WorkItem child)`  
 Adds a child work item.
 
-`AddParent(WorkItem parent)`
+`AddParent(WorkItem parent)`  
 Adds a parent work item.
 
-`AddLink(string type, string url, string comment)`
+`AddLink(string type, string url, string comment)`  
 Adds an element to the collection.
 
-`AddHyperlink(string url, string comment = null)`
+`AddHyperlink(string url, string comment = null)`  
 Adds a hyperlink to the collection.
 
-`AddRelatedLink(WorkItem item, string comment = null)`
+`AddRelatedLink(WorkItem item, string comment = null)`  
 Adds a related work item to the collection.
 
-`AddRelatedLink(string url, string comment = null)`
+`AddRelatedLink(string url, string comment = null)`  
 Adds a related work item to the collection.
 
-`Clear()`
+`Clear()`  
 Removes all elements from the collection.
 
-`bool Contains(WorkItemRelation item)`
+`bool Contains(WorkItemRelation item)`  
 Returns `true` if the element is present in the collection.
 
-`bool Remove(WorkItemRelation item)`
+`bool Remove(WorkItemRelation item)`  
 Removes the element from the collection.
 
-`int Count`
+`int Count`  
 Returns the number of elements in the work item collection.
 
-`bool IsReadOnly`
+`bool IsReadOnly`  
 Returns `true` is collection is read-only.
 
 
 
 ## WorkItemRelation type
 
-`int LinkedId`
+`int LinkedId`  
 Read-only, returns the Id to the target object.
 
-`string Title`
+`string Title`  
 Read-only, returns the title property of the relation.
 
-`string Rel`
+`string Rel`  
 Read-only, returns the type of the relation, e.g. `System.LinkTypes.Hierarchy-Reverse`.
 See [Link type reference](https://docs.microsoft.com/en-us/azure/devops/boards/queries/link-type-reference).
 
-`string Url`
+`string Url`  
 Read-only, returns the URL to the target object.
 
-`IDictionary<string, object> Attributes`
+`IDictionary<string, object> Attributes`  
 To manipulate the possible attributes of the relation. Currently Azure DevOps uses only the `comment` attribute.
 
 
