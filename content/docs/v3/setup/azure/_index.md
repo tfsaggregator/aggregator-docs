@@ -81,7 +81,7 @@ In Azure Portal you can check the permissions in the IAM menu for the selected R
 
 ## Azure DevOps Personal Access Token (PAT)
 
-See [](../azdo-authn/)
+See [Azure DevOps Personal Access Token](../azdo-authn/).
 
 
 
