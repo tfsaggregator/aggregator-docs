@@ -15,7 +15,7 @@ Note the `$` sign.
 
 
 ## Event variable [v0.9.11]
-The `event` variable describes what triggered the rule.
+The `eventType` variable describes what triggered the rule.
 It can hold one of the following string constants.
 
 ```C#
