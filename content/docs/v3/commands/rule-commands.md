@@ -6,18 +6,18 @@ weight: 240
 ## add.rule
 Add a rule to existing Aggregator instance in Azure. It requires three mandatory options.
 
-Option          | Short form | Description
-----------------|:-----:|---------
-`--instance`    | `-i`  | The name of an existing Aggregator instance (Azure Function App).
-`--name`        | `-n`  | The name of the new Rule. This will be the name of the Azure Function.
-`--file`        | `-f`  | Relative or absolute path to the file with the Rule code.
+Option            | Short form | Description
+------------------|:-----:|---------
+`--instance`      | `-i`  | The name of an existing Aggregator instance (Azure Function App).
+`--name`          | `-n`  | The name of the new Rule. This will be the name of the Azure Function.
+`--file`          | `-f`  | Relative or absolute path to the file with the Rule code.
+`--resourceGroup` | `-g`  | Azure Resource Group that contains the Aggregator instance.
 
 You can use these two options to further specify the Instance name.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
-`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
+`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option turns off automatic name generation and allow comply with enterprise requirements.
 
 Note that the Rules sharing the same Instance use the same Runtime version.
 
@@ -126,7 +126,7 @@ Option                  | Short form | Description
 ------------------------|:-----:|---------
 `--instance`            | `-i`  | The name of an existing Aggregator instance (Azure Function App).
 `--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
-`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
+`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option turns off automatic name generation and allow comply with enterprise requirements.
 `--name`                | `-n`  | The name of an existing Rule to run. It must be previously uploaded using [`add.rule`](#addrule).
 
 The Instance (Azure Function App) will be empty if you delete the last Rule.

@@ -13,7 +13,7 @@ Option                  | Short form | Description
 ------------------------|:-----:|---------
 `--instance`            | `-i`  | The name of an existing Aggregator instance (Azure Function App).
 `--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
-`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
+`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option turns off automatic name generation and allow comply with enterprise requirements.
 `--rule`                | `-r`  | The name of an existing Rule to run. It must be previously uploaded using [`add.rule`](../rule-commands/#addrule).
 
 These parameters identifies the Azure DevOps Project event that will be sent to the Rule.

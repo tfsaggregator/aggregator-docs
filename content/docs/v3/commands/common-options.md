@@ -10,7 +10,7 @@ All commands accept the `--verbose` option (or `-v` in the short form) to print 
 ## Naming Templates
 
 With `--namingTemplate`, you can specify affixes for all Azure resource that will be created or used.
- follows
+This example should be mostly self-explanatory.
 
 ```json
 {
@@ -27,5 +27,6 @@ With `--namingTemplate`, you can specify affixes for all Azure resource that wil
 }
 ```
 
-If you use the `--namingTemplate` option, the `--resourceGroup` option is mandatory.
+Naming templates are explaind in details at [Azure Resource Names](instance-commands#azure-resource-names).
 
+NOTE: If you use the `--namingTemplate` option, the `--resourceGroup` option is mandatory.

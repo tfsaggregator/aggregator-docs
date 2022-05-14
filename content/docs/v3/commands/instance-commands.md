@@ -8,9 +8,9 @@ weight: 230
 Aggregator CLI has three ways of generating names for Azure Resources.
 Keep in mind, that Azure Function App and Storage resources must have unique names in Azure.
 
-### Basic template
+### Basic template [removed in 1.3]
 
-This template is used when you **do not** specify the `--resourceGroup` option.
+This template was used in version up to 1.2 included, it is used when `--resourceGroup` option is **not** specified.
 
 In this scenario Aggregator tries to create an Azure Resource Group for each instance.
 The name of the resource group derives from the instance name.
@@ -24,16 +24,16 @@ Function App    | `fooaggregator`
 Hosting Plan    | `fooaggregator-plan`
 AppInsight      | `fooaggregator-ai`
 
-
 ### Default template
 
-This template is used  when you specify the `--resourceGroup` option
+This template is used when you specify the `--resourceGroup` option but no `--namingTemplate`.
+If the Azure Resource Group does not exists, Aggregator creates it, which requires additional permissions.
 
 Object          | Generated name
 ----------------|------------------
 Instance Name   | `foo`
 Resource Group  | `bar`
-StorageAccount  | `aggregator`######## (8 random characters)
+StorageAccount  | `aggregator`######## (8 pseudo-random characters)
 Function App    | `fooaggregator`
 Hosting Plan    | `fooaggregator-plan`
 AppInsight      | `fooaggregator-ai`
@@ -86,10 +86,11 @@ This cache applies to both `install.instance` and `update.instance` commands.
 
 Creates a new Aggregator instance in Azure. It requires two mandatory options.
 
-Option          | Short form | Description
-----------------|:-----:|---------
-`--name`        | `-n`  | The name for the new Aggregator instance.
-`--location`    | `-l`  | Name of Azure region that will host the Aggregator instance.
+Option            | Short form | Description
+------------------|:-----:|---------
+`--name`          | `-n`  | The name for the new Aggregator instance.
+`--location`      | `-l`  | Name of Azure region that will host the Aggregator instance.
+`--resourceGroup` | `-g`  | Azure Resource Group that contains the Aggregator instances. The Resource Group must already exists and the logon account must be a Contributor.
 
 This command creates a few resources in Azure:
  * An Azure Function App that will host the Rule Engine and receive the notifications from Azure DevOps.
@@ -107,7 +108,6 @@ You can refine the process with additional options.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instances. If you specify this option, the Resource Group must already exists and the logon account must be a Contributor.
 `--namingTemplate`      |  n/a  | Specify affixes for all Azure resources that will be created. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
 `--requiredVersion`     |  n/a  | Version of Aggregator Runtime required. This is mutually exclusive with `--sourceUrl`. The matching version is retrieved from GitHub and uploaded to the Azure Function App. The version number must match one of the [Aggregator releases](https://github.com/tfsaggregator/aggregator-cli/releases) in GitHub. Note that [GitHub caching](#github-cache) applies.
 `--sourceUrl`           |  n/a  | URL of Aggregator Runtime. This is mutually exclusive with `--requiredVersion`. It should be used in enterprise scenario where the CLI cannot read from GitHub. It supports `http`, `https` and `file` scheme, so you can download the Runtime on a network share.
@@ -118,16 +118,16 @@ Option                  | Short form | Description
 ## configure.instance
 Reconfigures an existing Aggregator instance. It requires two mandatory options.
 
-Option          | Short form | Description
-----------------|:-----:|---------
-`--name`        | `-n`  | The name of an existing Aggregator instance.
-`--location`    | `-l`  | Name of Azure region hosting the Aggregator instance.
+Option            | Short form | Description
+------------------|:-----:|---------
+`--name`          | `-n`  | The name of an existing Aggregator instance.
+`--location`      | `-l`  | Name of Azure region hosting the Aggregator instance.
+`--resourceGroup` | `-g`  | Azure Resource Group that contains the Aggregator instance.
 
 You can use these two options to further specify the name.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
 `--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
 
 Furthermore, you must specify one of these two options.
@@ -146,12 +146,12 @@ It is not guaranteed to work across major version of runtime.
 Option          | Short form | Description
 ----------------|:-----:|---------
 `--instance`    | `-i`  | The name of an existing Aggregator instance.
+`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
 
 You can use these two options to further specify the name.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
 `--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
 
 
@@ -166,17 +166,17 @@ Option                  | Short form | Description
 ## uninstall.instance
 Destroys an Aggregator instance in Azure, that is the Azure Function App created by [`install.instance`](#installinstance). It requires two mandatory options.
 
-Option          | Short form | Description
-----------------|:-----:|---------
-`--name`        | `-n`  | The name of an existing Aggregator instance.
-`--location`    | `-l`  | Name of Azure region hosting the Aggregator instance.
+Option            | Short form | Description
+------------------|:-----:|---------
+`--name`          | `-n`  | The name of an existing Aggregator instance.
+`--location`      | `-l`  | Name of Azure region hosting the Aggregator instance.
+`--resourceGroup` | `-g`  | Azure Resource Group that contains the Aggregator instance.
 
 You can use these two options to further specify the operation.
 
 Option                  | Short form | Description
 ------------------------|:-----:|---------
-`--resourceGroup`       | `-g`  | Azure Resource Group that contains the Aggregator instance.
-`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option requires defining `--resourceGroup`, also. This turns off automatic name generation and allow comply with enterprise requirements.
+`--namingTemplate`      |  n/a  | Specify affixes for Azure resources. This option turns off automatic name generation and allow comply with enterprise requirements.
 `--dont-remove-mappings`| `-m`  | Do not remove mappings from Azure DevOps (default is to remove them).
 
 The Resource Group is deleted only if it was created by Aggregator.
