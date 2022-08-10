@@ -32,7 +32,7 @@ The latter permits replacing the Server Plugin after migrating the Rule code.
 
 TFS Aggregator is a extension for Team Foundation Server (TFS) and Azure DevOps Server (**not Service!**) that enables running custom script when Work Items change, allowing dynamic calculation of field values in TFS and more.
 
-You can use the Server Plugin, for TFS 2013 update 2 up to Azure DevOps Server 2020.
+You can use the Server Plugin, for TFS 2013 update 2 up to Azure DevOps Server 2022.
 
 > TFS Server API changes frequently: the Server Plugin contains specific code for each TFS version, so the binaries will work only with a specific TFS version. The Web Service has not such a problem.
 
