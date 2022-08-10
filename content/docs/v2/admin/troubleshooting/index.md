@@ -31,28 +31,6 @@ $pathToAssemblyFile = "C:\Program Files\Microsoft Team Foundation Server 15.0\Ap
 Also if you are having issues we recommend debugging your Policies file using `TFSAggregator2.ConsoleApp.exe` and trying that out (see below).
 
 
-## Web Service Checklist
-
-As described in [How it Works](/intro/how-it-works) authentication goes both ways between TFS/VSTS and TFS Aggregator.
-
-![Web Service Authentication](/intro/how-it-works/webservice-authentication.jpg)
-
-The call from VSTS to Web Service sends user and password in clear, protected by SSL, the values must match one entry of the Users section in Aggregator Web Service `web.config`
-
-```
-<Users>
-    <add key="user1" value="password1" />
-</Users>
-```
-
-This is not a real user (unless someone will offer Aggregator-as-a-Service), can be any printable string. I need it for two reasons:
-
- 1. the Web Hooks configuration requires to enter some values and
- 2. you can control access to a single TFS Aggregator instance setting different users, per project or per account.
- 
-The call from Aggregator Web Service to VSTS authenticates using a PAT issued by VSTS itself. Again, the PAT is listed in the policy to allow insulation between projects or accounts.
-
-
 ## Policy / Rules Checklist
 
  -  You have updated a work item that triggers a rule. (The TFS Aggregation only works once a work item that has aggregation rules on it is updated. This may change in a future version.)
