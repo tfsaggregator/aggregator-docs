@@ -98,7 +98,7 @@ An uninstall+reinstall is required, repairing may not work. TFS will detect the 
  3. Test your policy using  `TFSAggregator2.ConsoleApp.exe` command line tool, see [TFS Aggregator Troubleshooting](/admin/troubleshooting).
  4. Register the EventLog source for TFS Aggregator, using an elevated Powershell prompt, by running
     ```
-New-EventLog -LogName "Application" -Source "TFSAggregator"
+    New-EventLog -LogName "Application" -Source "TFSAggregator"
     ```
  5. Copy `TFSAggregator2.ServerPlugin.dll`, `TFSAggregator2.Core.dll` and `TFSAggregator2.ServerPlugin.policies` to the plugin location on the Application Tier of your TFS Servers:
      - The plugin folder is usually at this path for TFS 2017: `C:\Program Files\Microsoft Team Foundation Server 15.0\Application Tier\Web Services\bin\Plugins`;
