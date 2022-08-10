@@ -63,26 +63,6 @@ Make sure to enable the **Capture Global Win32** option.
 Download DebugView at <http://technet.microsoft.com/en-us/sysinternals/bb896647>.
 
 
-## Capturing log on Azure
-
-In this scenario you deployed the TFS Aggregator Web Service using the _Deploy to Azure_ button.
-
-In the [Azure Portal](https://portal.azure.com/) navigate to **App Services** and select the App Service hosting TFS Aggregator. Scroll down to **Diagnostic logs** and turn on **Application Logging**.
-
-![](./3-log1.png)
-
-Select the Verbosity level and save.
-
-> You can store the logs in Azure storage for auditing.
-
-In the Kudu console navigate to the `LogFiles\Application` folder to find the log files produced by TFS Aggregator.
-
-![](./3-log2.png)
-
-By opening the file you see a snapshot of log file's content.
-
-![Content of a log file](./3-log3.png)
-
 
 ## TFS Production Logging (2.1)
 
