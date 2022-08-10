@@ -34,7 +34,7 @@ TFS Aggregator is a extension for Team Foundation Server (TFS) and Azure DevOps 
 
 You can use the Server Plugin, for TFS 2013 update 2 up to Azure DevOps Server 2022.
 
-> TFS Server API changes frequently: the Server Plugin contains specific code for each TFS version, so the binaries will work only with a specific TFS version. The Web Service has not such a problem.
+> TFS Server API changes frequently: the Server Plugin contains specific code for each TFS version, so the binaries will work only with a specific TFS version. 
 
 ## Contacts
 
