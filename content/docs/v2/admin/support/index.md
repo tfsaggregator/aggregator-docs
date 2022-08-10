@@ -11,7 +11,6 @@ If you checked everything in [Troubleshooting](/admin/troubleshooting) and it st
  * Aggregator version
  * TFS version or VSTS
  * Content of your `TFSAggregator2.ServerPlugin.policies` file (e.g. save it on <https://gist.github.com/> and copy the link in the Issue)
- * Content of your `web.config` file (_Web Service only_)
  * Definition of your work item types (use [witadmin exportwitd](https://msdn.microsoft.com/en-us/library/dd312129.aspx))
 
 If you built the assemblies yourselves, they take a fixed `2.0.0.0` version. Please report, the source code version (Tag or commit SHA) used to build your binaries.  
