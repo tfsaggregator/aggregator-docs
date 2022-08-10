@@ -19,6 +19,9 @@ The TFS Aggregator works with the following versions of TFS:
  * TFS 2015 update 1,2,3
  * TFS 2017 RTM
  * TFS 2017 update 1
+ * Azure DevOps Server 2019
+ * Azure DevOps Server 2020
+ * Azure DevOps Server 2022 
 
 The installer will detect the correct TFS version and will install the appropriate binary. If you're upgrading, please uninstall your current TFS Aggregator version, upgrade TFS, then run the installer to automatically install the matching version.
 
@@ -80,18 +83,7 @@ See [Console Application](/admin/console-app) for more information on using the 
 ## Upgrade TFS to a new version
 Due to the fact that there have been breaking changes between TFS Server Object Model versions, there may be a need to fix the TFS aggregator after an upgrade.
 
-When upgrading from/to specific versions, you need to uninstall TFS aggregator before upgrading the Application Tier server re-install it afterwards.
-
-* TFS 2013 update 5
- * to TFS 2015 RTM
- * to TFS 2015 update 3
-* TFS 2015 RTM
- * to TFS 2015 update 3
- * to TFS 2017 RTM
- * to TFS 2017 update 1
-* TFS 2015 Update 3
- * to TFS 2017 RTM
- * to TFS 2017 update 1
+When upgrading TFS / Azure DevOps Server, you need to uninstall TFS aggregator before upgrading the Application Tier server re-install it afterwards.
 
 An uninstall+reinstall is required, repairing may not work. TFS will detect the incompatibility and will not load the plugin if the version mismatches.
 
